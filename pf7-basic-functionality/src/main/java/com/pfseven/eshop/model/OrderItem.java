@@ -1,8 +1,13 @@
 package com.pfseven.eshop.model;
 
-import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class OrderItem {
-    private ArrayList<Product> items;
-    private int quantity;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class OrderItem extends Product{
+    private Boolean ordering;
 }

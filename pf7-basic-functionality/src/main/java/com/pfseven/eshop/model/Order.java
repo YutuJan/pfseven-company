@@ -1,11 +1,19 @@
 package com.pfseven.eshop.model;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Order {
-    private int id;
-    private BigDecimal totalCost;
-    private ArrayList<OrderItem> orderItems;
-    private boolean pending;
+    private Integer id;
+    private BigDecimal total_price;
+    private String payment_method;
+    private Boolean pending_payment;
+
+
 }
