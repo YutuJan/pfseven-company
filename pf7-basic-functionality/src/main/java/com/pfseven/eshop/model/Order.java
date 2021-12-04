@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Order {
     private int id;
-    private BigDecimal totalCost;
-    private ArrayList<OrderItem> orderItems;
+    private float totalCost;
+    private ArrayList<Product> orderItems;
     private boolean pending;
 }
