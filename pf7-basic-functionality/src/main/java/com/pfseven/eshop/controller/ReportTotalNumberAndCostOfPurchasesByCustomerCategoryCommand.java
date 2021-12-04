@@ -4,6 +4,7 @@ public class ReportTotalNumberAndCostOfPurchasesByCustomerCategoryCommand implem
 
     @Override
     public void execute() {
+        String customerType = EshopController.askAdministratorForCustomerType();
         System.out.println("Hello from ReportTotalNumberAndCostOfPurchasesByCustomerCategoryCommand");//TODO replace and add functionality
     }
 }

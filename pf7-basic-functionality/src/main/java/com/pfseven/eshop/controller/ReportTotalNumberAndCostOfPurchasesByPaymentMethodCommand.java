@@ -4,6 +4,7 @@ public class ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand implement
 
     @Override
     public void execute() {
+        String paymentMethod = EshopController.askAdministratorForPaymentMethod();
         System.out.println("Hello from ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand");//TODO replace and add functionality
     }
 }
