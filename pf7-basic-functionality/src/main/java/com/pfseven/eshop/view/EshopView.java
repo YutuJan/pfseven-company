@@ -1,6 +1,8 @@
 package com.pfseven.eshop.view;
 
 import com.pfseven.eshop.controller.EshopController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
@@ -17,6 +19,7 @@ public class EshopView {
 
     private static final int SHUT_SYSTEM_OPTION = 9;
 
+    private static final Logger logger = LoggerFactory.getLogger(EshopView.class);
     private static EshopController controller = new EshopController();
 
     public static void main(String[] args) {
@@ -56,32 +59,32 @@ public class EshopView {
             } else if (adminOption == REMOVE_PRODUCT_TO_AN_ORDER_OPTION){
                 controller.enact("RemoveProductOrder");
             } else {
-                System.out.println("This option is not available, please try again...");
+                logger.info("This option is not available, please try again...");
             }
         }
     }
 
     private static void showAdministratorPossibleActions() {
-        System.out.println("-----------------------");
-        System.out.println("Choose one of the following options:");
-        System.out.println(CREATE_CUSTOMER_OPTION + ") " + "CREATE CUSTOMER");
-        System.out.println(ADD_PRODUCT_TO_AN_ORDER_OPTION + ") " +
+        logger.info("-----------------------");
+        logger.info("Choose one of the following options:");
+        logger.info(CREATE_CUSTOMER_OPTION + ") " + "CREATE CUSTOMER");
+        logger.info(ADD_PRODUCT_TO_AN_ORDER_OPTION + ") " +
                 "ADD PRODUCT TO AN ORDER");
-        System.out.println(REMOVE_PRODUCT_TO_AN_ORDER_OPTION + ") " +
+        logger.info(REMOVE_PRODUCT_TO_AN_ORDER_OPTION + ") " +
                 "REMOVE PRODUCT TO AN ORDER");
-        System.out.println(BUY_PRODUCTS_OPTION + ") " +
+        logger.info(BUY_PRODUCTS_OPTION + ") " +
                 "BUY PRODUCTS");
 
-        System.out.println(REPORT_TOTAL_NUMBER_AND_COST_OF_PURCHASES_BY_CUSTOMER_ID_OPTION + ") " +
+        logger.info(REPORT_TOTAL_NUMBER_AND_COST_OF_PURCHASES_BY_CUSTOMER_ID_OPTION + ") " +
                 "REPORT TOTAL NUMBER AND COST OF PURCHASES BY CUSTOMER ID");
-        System.out.println(REPORT_TOTAL_NUMBER_AND_COST_OF_PURCHASES_BY_CUSTOMER_CATEGORY_OPTION + ") " +
+        logger.info(REPORT_TOTAL_NUMBER_AND_COST_OF_PURCHASES_BY_CUSTOMER_CATEGORY_OPTION + ") " +
                 "REPORT TOTAL NUMBER AND COST OF PURCHASES BY CUSTOMER CATEGORY");
-        System.out.println(REPORT_TOTAL_NUMBER_AND_COST_OF_PURCHASES_BY_PAYMENT_METHOD_OPTION + ") " +
+        logger.info(REPORT_TOTAL_NUMBER_AND_COST_OF_PURCHASES_BY_PAYMENT_METHOD_OPTION + ") " +
                 "REPORT TOTAL NUMBER AND COST OF PURCHASES BY PAYMENT METHOD");
-        System.out.println(REPORT_CUSTOMERS_WHO_PURCHASED_MOST_EXPENSIVE_PRODUCT_OPTION + ") " +
+        logger.info(REPORT_CUSTOMERS_WHO_PURCHASED_MOST_EXPENSIVE_PRODUCT_OPTION + ") " +
                 "REPORT CUSTOMERS WHO PURCHASED MOST EXPENSIVE PRODUCT");
 
 
-        System.out.println(SHUT_SYSTEM_OPTION + ") " + "SHUT SYSTEM");
+        logger.info(SHUT_SYSTEM_OPTION + ") " + "SHUT SYSTEM");
     }
 }

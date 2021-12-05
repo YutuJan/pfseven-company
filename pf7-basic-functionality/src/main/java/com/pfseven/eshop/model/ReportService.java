@@ -2,19 +2,19 @@ package com.pfseven.eshop.model;
 
 public class ReportService {
 
-    public void reportCustomersWhoPurchasedMostExpensiveProductCommand(){
+    public void reportCustomersWhoPurchasedMostExpensiveProduct(){
 
     }
 
-    public void reportTotalNumberAndCostOfPurchasesByCustomerCategoryCommand(){
+    public void reportTotalNumberAndCostOfPurchasesByCustomerCategory(String category){
 
     }
 
-    public void reportTotalNumberAndCostOfPurchasesByCustomerIDCommand(){
+    public void reportTotalNumberAndCostOfPurchasesByCustomerID(String id){
 
     }
 
-    public void reportTotalNumberAndCostOfPurchasesByPaymentMethodCommand(){
+    public void reportTotalNumberAndCostOfPurchasesByPaymentMethod(String paymentMethod){
 
     }
 

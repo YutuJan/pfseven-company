@@ -1,35 +1,40 @@
 package com.pfseven.eshop.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Scanner;
 
 public class EshopController {
+    private static Logger logger = LoggerFactory.getLogger(EshopController.class);
+
     public void enact(String commandID) throws Exception {
         Command command = CommandFactory.getCommand(commandID);
         command.execute();
     }
 
     public static String askAdministratorForCustomerID(){
-        System.out.print("Enter customer id: ");
+        logger.info("Enter customer id: ");
         return askAdministratorForAnInput();
     }
 
     public static String askAdministratorForProductID(){
-        System.out.print("Enter product id: ");
+        logger.info("Enter product id: ");
         return askAdministratorForAnInput();
     }
 
     public static String askAdministratorForPaymentMethod(){
-        System.out.print("Enter payment method: ");
+        logger.info("Enter payment method: ");
         return askAdministratorForAnInput();
     }
 
     public static String askAdministratorForCustomerName(){
-        System.out.print("Enter customer name: ");
+        logger.info("Enter customer name: ");
         return askAdministratorForAnInput();
     }
 
     public static String askAdministratorForCustomerType(){
-        System.out.print("Enter customer type: ");
+        logger.info("Enter customer type: ");
         return askAdministratorForAnInput();
     }
 
