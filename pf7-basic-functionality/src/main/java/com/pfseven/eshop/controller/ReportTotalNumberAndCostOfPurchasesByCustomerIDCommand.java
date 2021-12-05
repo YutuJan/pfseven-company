@@ -5,6 +5,7 @@ public class ReportTotalNumberAndCostOfPurchasesByCustomerIDCommand implements C
     @Override
     public void execute() {
         String customerID = EshopController.askAdministratorForCustomerID();
-        System.out.println("Hello from ReportTotalNumberAndCostOfPurchasesByIDCommand");//TODO replace and add functionality
+        System.out.println("Hello from ReportTotalNumberAndCostOfPurchasesByCustomerID... " +
+                "customer's ID: " + customerID);//TODO replace and add functionality
     }
 }

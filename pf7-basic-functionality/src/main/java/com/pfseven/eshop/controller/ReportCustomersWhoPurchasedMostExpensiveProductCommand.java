@@ -4,6 +4,6 @@ public class ReportCustomersWhoPurchasedMostExpensiveProductCommand implements C
 
     @Override
     public void execute() {
-        System.out.println("Hello from ReportCustomersWhoPurchasedMostExpensiveProductCommand");//TODO replace and add functionality
+        System.out.println("Hello from ReportCustomersWhoPurchasedMostExpensiveProductCommand...");//TODO replace and add functionality
     }
 }

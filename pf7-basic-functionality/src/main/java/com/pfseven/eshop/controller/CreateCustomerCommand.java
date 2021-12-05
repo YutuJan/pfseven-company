@@ -6,6 +6,7 @@ public class CreateCustomerCommand implements Command{
     public void execute() {
         String name = EshopController.askAdministratorForCustomerName();
         String customerType = EshopController.askAdministratorForCustomerType();
-        System.out.println("Hello from CreateCustomerCommand");//TODO replace and add functionality
+        System.out.println("Hello from CreateCustomerCommand... " + "name: " + name +
+                ", customer type: " + customerType);//TODO replace and add functionality
     }
 }
