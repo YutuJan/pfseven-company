@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import static com.pfseven.eshop.controller.EshopController.databaseService;
 
 public class LaunchSystemCommand implements Command{
-    private Logger logger = LoggerFactory.getLogger(LaunchSystemCommand.class);
+    private final Logger logger = LoggerFactory.getLogger(LaunchSystemCommand.class);
 
     @Override
     public void execute() {

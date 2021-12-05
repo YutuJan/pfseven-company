@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ReportCustomersWhoPurchasedMostExpensiveProductCommand implements Command{
-    private Logger logger = LoggerFactory.getLogger(ReportCustomersWhoPurchasedMostExpensiveProductCommand.class);
+    private final Logger logger = LoggerFactory.getLogger(ReportCustomersWhoPurchasedMostExpensiveProductCommand.class);
 
     @Override
     public void execute() {

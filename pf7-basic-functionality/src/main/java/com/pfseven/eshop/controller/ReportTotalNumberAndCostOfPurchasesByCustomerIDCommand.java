@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ReportTotalNumberAndCostOfPurchasesByCustomerIDCommand implements Command{
-    private Logger logger = LoggerFactory.getLogger(ReportTotalNumberAndCostOfPurchasesByCustomerIDCommand.class);
+    private final Logger logger = LoggerFactory.getLogger(ReportTotalNumberAndCostOfPurchasesByCustomerIDCommand.class);
 
     @Override
     public void execute() {
