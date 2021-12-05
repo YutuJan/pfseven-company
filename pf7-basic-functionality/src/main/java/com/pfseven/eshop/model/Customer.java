@@ -1,7 +1,7 @@
 package com.pfseven.eshop.model;
 
 public class Customer {
-    private int id;
+    private String id;
     private String name;
     private String category;
     private Order order;
