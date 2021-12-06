@@ -85,6 +85,10 @@ public class DatabaseService {
         return resultSet;
     }
 
+    public static Statement getStatement(){
+        return statement;
+    }
+
     public void showResultsFromOrdersTable(ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             logger.info("customer_id: {}," +
