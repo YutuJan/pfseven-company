@@ -12,13 +12,11 @@ public class LaunchSystemCommand implements Command{
 
     @Override
     public void execute() {
-        logger.info("Hello from LaunchSystemCommand...");//TODO replace and add functionality
         try{
             databaseService.launchDB();
         } catch (SQLException e) {
             e.printStackTrace();
             System.exit(-1);
         }
-
     }
 }
