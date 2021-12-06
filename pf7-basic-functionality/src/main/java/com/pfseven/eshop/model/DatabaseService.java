@@ -14,7 +14,7 @@ public class DatabaseService {
     private final String DB_PASSWORD = "";
     private Server server;
     private Connection connection;
-    private Statement statement;
+    private static Statement statement;
 
     public void launchDB() throws SQLException {
         server = Server.createTcpServer("-tcpAllowOthers", "-tcpDaemon");
@@ -87,35 +87,5 @@ public class DatabaseService {
 
     public static Statement getStatement(){
         return statement;
-    }
-
-    public void showResultsFromOrdersTable(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()){
-            logger.info("customer_id: {}," +
-                        " customer_name: {}," +
-                        " customer_category: {}," +
-                        " product_id: {}," +
-                        " product_name: {}," +
-                        " product_cost: {}," +
-                        " product_cost_with_discount: {}",
-                        resultSet.getString("customer_id"),
-                        resultSet.getString("customer_name"),
-                        resultSet.getString("customer_category"),
-                        resultSet.getString("product_id"),
-                        resultSet.getString("product_name"),
-                        resultSet.getString("product_cost"),
-                        resultSet.getString("product_cost_with_discount"));
-        }
-    }
-
-    public void showResultsFromProductsTable(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()){
-            logger.info("id: {}," +
-                        " name: {}," +
-                        " cost: {},",
-                        resultSet.getString("id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("cost"));
-        }
     }
 }
