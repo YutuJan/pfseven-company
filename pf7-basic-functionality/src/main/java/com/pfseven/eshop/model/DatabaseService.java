@@ -95,9 +95,9 @@ public class DatabaseService {
 
     /** only for testing needed
     private void addCustomersInDatabase() throws SQLException {
-        addCustomerInDatabase("1", "Aram", "business");
-        addCustomerInDatabase("2", "Kosta", "business");
-        addCustomerInDatabase("3", "Kira","business");
+        addCustomerInDatabase("1", "Aram", "B2B");
+        addCustomerInDatabase("2", "Kosta", "B2B");
+        addCustomerInDatabase("3", "Kira","B2B");
     }
 
     private void addCustomerInDatabase(String customer_id,
@@ -112,12 +112,12 @@ public class DatabaseService {
 
     private void addOrdersInDatabase() throws SQLException {
         addOrderInDatabase("1", "1", "11", "cash", "12");
-        addOrderInDatabase("2", "1", "13", "card", "20");
+        addOrderInDatabase("2", "1", "13", "credit", "20");
         addOrderInDatabase("3", "2", "12", "cash", "50000");
         addOrderInDatabase("4", "2", "16", "cash", "100");
-        addOrderInDatabase("5", "3", "13", "card", "20");
-        addOrderInDatabase("6", "3", "12", "card", "30000");
-        addOrderInDatabase("7", "3", "12", "card", "30000");
+        addOrderInDatabase("5", "3", "13", "credit", "20");
+        addOrderInDatabase("6", "3", "12", "credit", "30000");
+        addOrderInDatabase("7", "3", "12", "credit", "30000");
     }
 
     private void addOrderInDatabase(String order_id,

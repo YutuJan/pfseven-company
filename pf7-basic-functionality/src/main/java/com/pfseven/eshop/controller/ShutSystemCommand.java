@@ -10,7 +10,6 @@ public class ShutSystemCommand implements Command{
 
     @Override
     public void execute() {
-        logger.info("Hello from ShutSystemCommand...");//TODO replace and add functionality
         databaseService.shutDB();
     }
 }
