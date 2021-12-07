@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.xml.crypto.Data;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,9 +16,12 @@ public class DataBase {
 
     private static ArrayList<Product> listOfProducts = new ArrayList();
     private static ArrayList<Product> orderList = new ArrayList();
-    private static Float cost = 0F;
-    HashMap<String, ArrayList<Float>> appMap = new HashMap<String, ArrayList<Float>>();
-    private static Float number = 0F;
+    private static Float cost;
+    private static HashMap<String, ArrayList<Float>> appMapId = new HashMap<String, ArrayList<Float>>();
+    private static HashMap<String, ArrayList<Float>> appMapCategory = new HashMap<String, ArrayList<Float>>();
+
+    private static ArrayList<Float> array = new ArrayList();
+    private static Float number;
     private static final Logger logger = LoggerFactory.getLogger(DataBase.class);
 
     private static final String DB_CONNECTION_URL_MEMORY_MODE = "jdbc:h2:mem:sample";
@@ -81,12 +85,41 @@ public class DataBase {
         }
         logger.info(String.valueOf(listOfProducts));
     }
-    public static void orderConfirmed(Integer id, Float number, Float cost, HashMap appMap){
+    public static void orderConfirmed(String id, Float number, Float cost, HashMap appMap){
         ArrayList<Float> array = new ArrayList();
-        array.add(number+1);
+        number = number +1;
+        array.add(number);
         array.add(cost);
         appMap.put(id,array);
-        logger.info(String.valueOf(appMap.get(id)));
+        logger.info("The total purchase the customer with id: '{}' had, is '{}' and the total cost is '{}'.", id, number, cost); //ua mpei sto report1
+    }
+    public static void initialCostumerId(Customer customer){
+        ArrayList<Float> array = new ArrayList();
+        if (DataBase.appMapId.containsKey(customer.getId())){
+            DataBase.number = DataBase.appMapId.get(customer.getId()).get(0);
+            DataBase.cost = DataBase.appMapId.get(customer.getId()).get(1);
+        }
+        else{
+            array.add(0F);
+            array.add(0F);
+            DataBase.appMapId.put(customer.getId(),array);
+        }
+    }
+    public static void initialCostumerCategory(Customer customer){
+        ArrayList<Float> array = new ArrayList();
+        if (DataBase.appMapCategory.containsKey(customer.getCategory())){
+            DataBase.number = DataBase.appMapCategory.get(customer.getCategory()).get(0);
+            DataBase.cost = DataBase.appMapCategory.get(customer.getCategory()).get(1);
+        }
+        else{
+            array.add(0F);
+            array.add(0F);
+            DataBase.appMapCategory.put(customer.getCategory(),array);
+        }
+        //logger.info(String.valueOf((ArrayList) appMapCategory.get(customer.getCategory())));
+    }
+    public static void reportByCustomerId(Customer customer, HashMap appMap){
+        logger.info("The total purchase the customer with id: '{}' had, is '{}' and the total cost is '{}'.", appMap.get(customer.getId()), number, cost); //ua mpei sto report1
     }
     public static Float totalCost(Float cost, OrderItem orderItem){
         for (Product product : DataBase.listOfProducts) {
@@ -96,6 +129,25 @@ public class DataBase {
         }
         return cost;
     }
+    public static void chooseItem(){}
+    public static void functionId(String key, Float number, Float cost, HashMap appMap){
+        logger.info("-----{}",String.valueOf((ArrayList) appMap.get(key)));
+        OrderItem orderItem = new OrderItem();
+        orderItem.setId(101);                            //diabazei id proiontos
+        cost = DataBase.totalCost(cost, orderItem);
+        orderItem.setId(101);
+        cost = DataBase.totalCost(cost, orderItem);
+        orderItem.setId(101);
+        cost = DataBase.totalCost(cost, orderItem);
+        //logger.info(String.valueOf(appMapId.get(customer.getId())));        //array apo map
+        DataBase.orderConfirmed(key, number, cost, appMap);
+
+        number = appMapCategory.get(key).get(0);                             //erroooor
+        DataBase.orderConfirmed(key, number, cost, appMap);
+        number = appMapCategory.get(key).get(0);
+        DataBase.orderConfirmed(key, number, cost, appMap);
+    }
+
     public static void main(String[] args) throws SQLException {
         DataBase.startServer();
         Connection connection = DriverManager.getConnection(DB_CONNECTION_URL_MEMORY_MODE, DB_USERNAME, DB_PASSWORD);
@@ -105,30 +157,19 @@ public class DataBase {
         //DataBase.showProduct(statement);
         DataBase.addProducts(statement);
         Customer customer = new Customer();				//na diabazei apo plhktrologio id
-        customer.setId(1);
-        HashMap<Integer, ArrayList> appMap = new HashMap<>();
-        //diabazei id proiontos
-        OrderItem orderItem = new OrderItem();
-        orderItem.setId(101);
-        DataBase.cost = DataBase.totalCost(cost, orderItem);
-        orderItem.setId(101);
-        cost = DataBase.totalCost(cost, orderItem);
-        orderItem.setId(101);
-        cost = DataBase.totalCost(cost, orderItem);
-        logger.info(String.valueOf(cost));
-        DataBase.orderConfirmed(customer.getId(), number, cost, appMap);
-        ArrayList<Float> array = new ArrayList();
-        array = appMap.get(customer.getId());
-        number = array.get(0);
-        cost = array.get(1);
-        DataBase.orderConfirmed(customer.getId(), number, cost, appMap);
-        array = appMap.get(customer.getId());
-        number = array.get(0);
-        cost = array.get(1);
-        orderItem.setId(101);
-        cost = DataBase.totalCost(cost, orderItem);
-        DataBase.orderConfirmed(customer.getId(), number, cost, appMap);
-
+        customer.setId(Character.toString('1'));
+        initialCostumerId(customer);
+//        functionId(customer.getId(),appMapId.get(customer.getId()).get(0), appMapId);
+        customer.setCategory("B2C");                    //enum gia category
+//
+        initialCostumerCategory(customer);                                               //enum payment_method
+        functionId(customer.getCategory(),appMapCategory.get(customer.getCategory()).get(0), appMapCategory.get(customer.getCategory()).get(1), appMapCategory);
+        Customer customer2 = new Customer();
+        customer2.setId(Character.toString('2'));
+        customer2.setCategory("B2C");                       //enum gia category
+        initialCostumerCategory(customer);
+        logger.info("-----{}",String.valueOf((ArrayList) appMapCategory.get(customer2.getCategory())));
+        functionId(customer2.getCategory(),appMapCategory.get(customer2.getCategory()).get(0), appMapCategory.get(customer2.getCategory()).get(1), appMapCategory);
         DataBase.shutDown();
     }
 }
