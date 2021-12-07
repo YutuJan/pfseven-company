@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CreateCustomerCommand implements Command{
-    private Logger logger = LoggerFactory.getLogger(CreateCustomerCommand.class);
+    private final Logger logger = LoggerFactory.getLogger(CreateCustomerCommand.class);
 
     @Override
     public void execute() {

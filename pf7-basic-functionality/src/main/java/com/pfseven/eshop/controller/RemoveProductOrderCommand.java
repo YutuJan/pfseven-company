@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class RemoveProductOrderCommand implements Command{
-    private Logger logger = LoggerFactory.getLogger(RemoveProductOrderCommand.class);
+    private final Logger logger = LoggerFactory.getLogger(RemoveProductOrderCommand.class);
 
     @Override
     public void execute() {
