@@ -8,6 +8,10 @@ import org.slf4j.LoggerFactory;
 import java.util.Scanner;
 
 public class EshopController {
+    private final static Logger logger = LoggerFactory.getLogger(EshopController.class);
+    protected static DatabaseService databaseService = new DatabaseService();
+    protected static ReportService reportService = new ReportService();
+
     enum PaymentCategories {
         CASH("cash"), CREDIT_CARD("credit");
 
@@ -27,10 +31,6 @@ public class EshopController {
             this.value = value;
         }
     }
-
-    private final static Logger logger = LoggerFactory.getLogger(EshopController.class);
-    protected static DatabaseService databaseService = new DatabaseService();
-    protected static ReportService reportService = new ReportService();
 
     public void enact(String commandID) throws Exception {
         Command command = CommandFactory.getCommand(commandID);
