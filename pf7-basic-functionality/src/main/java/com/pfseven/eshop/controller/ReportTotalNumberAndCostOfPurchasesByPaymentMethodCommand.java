@@ -4,7 +4,10 @@ import com.pfseven.eshop.model.DatabaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
 import java.sql.Statement;
+
+import static com.pfseven.eshop.controller.EshopController.reportService;
 
 public class ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand implements Command{
     private final Logger logger = LoggerFactory.getLogger(ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand.class);
@@ -13,7 +16,12 @@ public class ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand implement
     public void execute() {
         Statement statement = DatabaseService.getStatement();
         String paymentMethod = EshopController.askAdministratorForPaymentMethod();
-        logger.info("Hello from ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand... " +
-                "payment method: " + paymentMethod);//TODO replace and add functionality
+
+        try {
+            reportService.reportTotalNumberAndCostOfPurchasesByPaymentMethod(statement, paymentMethod);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 }

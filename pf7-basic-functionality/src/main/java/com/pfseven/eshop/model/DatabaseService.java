@@ -30,6 +30,11 @@ public class DatabaseService {
         createCustomersTable();
         createProductsTable();
         createOrdersTable();
+        addProductsInDatabase();
+        /** only for testing needed
+        addCustomersInDatabase();
+        addOrdersInDatabase();
+         **/
     }
 
     private void createCustomersTable() throws SQLException {
@@ -40,7 +45,7 @@ public class DatabaseService {
                 "customer_name varchar(50) not null," +
                 "customer_category varchar not null" +
                 ");");
-        logger.info("Created table command was successful with result {}.", result);
+        logger.info("Create Customers Table command was successful with result {}.", result);
     }
 
     private void createProductsTable() throws SQLException {
@@ -51,7 +56,7 @@ public class DatabaseService {
                 "product_name varchar(50) not null," +
                 "product_price double not null" +
                 ");");
-        logger.info("Created table command was successful with result {}.", result);
+        logger.info("Create Products Table command was successful with result {}.", result);
     }
 
     private void createOrdersTable() throws SQLException {
@@ -66,8 +71,68 @@ public class DatabaseService {
                 "foreign key (customer_id) references customers(customer_id)," +
                 "foreign key (product_id) references products(product_id)" +
                 ");");
-        logger.info("Created table command was successful with result {}.", result);
+        logger.info("Create Orders Table command was successful with result {}.", result);
     }
+
+    private void addProductsInDatabase() throws SQLException {
+        addProductInDatabase("11", "dildo", "123");
+        addProductInDatabase("12", "car", "10000000");
+        addProductInDatabase("13", "earplugs", "30");
+        addProductInDatabase("14", "lamp", "100");
+        addProductInDatabase("15", "bulb", "1");
+        addProductInDatabase("16", "watch", "300");
+    }
+
+    private void addProductInDatabase(String product_id,
+                                      String product_name,
+                                      String product_price) throws SQLException {
+        int result;
+
+        result = statement.executeUpdate("insert into products values (" +
+                "'" + product_id + "', '" + product_name + "', '" + product_price + "')");
+        logger.info("Add Product In Database command was successful with result {}.", result);
+    }
+
+    /** only for testing needed
+    private void addCustomersInDatabase() throws SQLException {
+        addCustomerInDatabase("1", "Aram", "business");
+        addCustomerInDatabase("2", "Kosta", "business");
+        addCustomerInDatabase("3", "Kira","business");
+    }
+
+    private void addCustomerInDatabase(String customer_id,
+                                        String customer_name,
+                                        String customer_category) throws SQLException {
+        int result;
+
+        result = statement.executeUpdate("insert into customers values (" +
+                "'" + customer_id + "', '" + customer_name + "', '" + customer_category + "')");
+        logger.info("Add Customers In Database command was successful with result {}.", result);
+    }
+
+    private void addOrdersInDatabase() throws SQLException {
+        addOrderInDatabase("1", "1", "11", "cash", "12");
+        addOrderInDatabase("2", "1", "13", "card", "20");
+        addOrderInDatabase("3", "2", "12", "cash", "50000");
+        addOrderInDatabase("4", "2", "16", "cash", "100");
+        addOrderInDatabase("5", "3", "13", "card", "20");
+        addOrderInDatabase("6", "3", "12", "card", "30000");
+        addOrderInDatabase("7", "3", "12", "card", "30000");
+    }
+
+    private void addOrderInDatabase(String order_id,
+                                     String customer_id,
+                                     String product_id,
+                                     String payment_method,
+                                     String cost_with_discount) throws SQLException {
+        int result;
+
+        result = statement.executeUpdate("insert into orders values (" +
+                "'" + order_id + "', '" + customer_id + "', '" + product_id +
+                "', '" + payment_method + "', '" + cost_with_discount + "')");
+        logger.info("Add Orders In Database command was successful with result {}.", result);
+    }
+     **/
 
     public void shutDB(){
         server.stop();

@@ -15,6 +15,7 @@ public class ReportCustomersWhoPurchasedMostExpensiveProductCommand implements C
     @Override
     public void execute() {
         Statement statement = DatabaseService.getStatement();
+
         try {
             reportService.reportCustomersWhoPurchasedMostExpensiveProductAndHowManyTimes(statement);
         } catch (SQLException e) {
