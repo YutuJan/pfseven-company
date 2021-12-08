@@ -5,8 +5,12 @@ import java.util.ArrayList;
 
 public class Order {
     private String id;
-    private double totalCost;
     private ArrayList<Product> orderItems;
+
+    public Order(){
+        id = String.valueOf(this.hashCode());
+        orderItems = new ArrayList<>();
+    }
 
     public void addOrderItem(Product orderItem){
         orderItems.add(orderItem);
