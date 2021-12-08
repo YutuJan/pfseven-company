@@ -1,16 +1,20 @@
 package com.pfseven.eshop.controller;
 
+import com.pfseven.eshop.model.CustomerService;
 import com.pfseven.eshop.model.DatabaseService;
 import com.pfseven.eshop.model.ReportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class EshopController {
     private final static Logger logger = LoggerFactory.getLogger(EshopController.class);
     protected static DatabaseService databaseService = new DatabaseService();
+    protected static Statement statement = DatabaseService.getStatement();
     protected static ReportService reportService = new ReportService();
+    protected static CustomerService customerService = new CustomerService(statement);
 
     enum PaymentCategories {
         CASH("cash"), CREDIT_CARD("credit");

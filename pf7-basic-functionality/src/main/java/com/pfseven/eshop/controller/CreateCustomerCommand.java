@@ -1,16 +1,14 @@
 package com.pfseven.eshop.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static com.pfseven.eshop.controller.EshopController.customerService;
 
 public class CreateCustomerCommand implements Command{
-    private final Logger logger = LoggerFactory.getLogger(CreateCustomerCommand.class);
 
     @Override
     public void execute() {
         String name = EshopController.askAdministratorForCustomerName();
         String customerType = EshopController.askAdministratorForCustomerType();
-        logger.info("Hello from CreateCustomerCommand... " + "name: " + name +
-                ", customer type: " + customerType);//TODO replace and add functionality
+
+        customerService.createNewCustomer(name, customerType);
     }
 }

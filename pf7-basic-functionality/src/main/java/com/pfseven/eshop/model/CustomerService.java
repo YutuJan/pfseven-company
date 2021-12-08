@@ -15,10 +15,15 @@ public class CustomerService {
     private HashMap<String, Product> bunchOfProducts;
     private Statement statement;
 
-    public CustomerService(Statement statement) throws SQLException {
+    public CustomerService(Statement statement) {
         this.statement = statement;
         bunchOfCustomers = new HashMap<String, Customer>();
-        bunchOfProducts = loadFromDatabaseAllAvailableProducts();
+        try {
+            bunchOfProducts = loadFromDatabaseAllAvailableProducts();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 
     private HashMap<String, Product> loadFromDatabaseAllAvailableProducts() throws SQLException {
@@ -57,6 +62,7 @@ public class CustomerService {
         }
     }
 
+    //TODO make sure we know what we are doing in here mate...
     public void createNewCustomer(String name, String customerCategory){
         if (!doesCustomerNameAlreadyExists(name)){
             Customer newCustomer = new Customer(name, customerCategory);

@@ -1,16 +1,14 @@
 package com.pfseven.eshop.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static com.pfseven.eshop.controller.EshopController.customerService;
 
 public class RemoveProductOrderCommand implements Command{
-    private final Logger logger = LoggerFactory.getLogger(RemoveProductOrderCommand.class);
 
     @Override
     public void execute() {
         String customerID = EshopController.askAdministratorForCustomerID();
         String productID = EshopController.askAdministratorForProductID();
-        logger.info("Hello from RemoveProductOrderCommand... " + "customer's ID: " + customerID +
-                ", product's ID: " + productID);//TODO replace and add functionality
+
+        customerService.removeOrderItem(customerID, productID);
     }
 }
