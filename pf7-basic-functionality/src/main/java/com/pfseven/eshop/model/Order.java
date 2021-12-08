@@ -19,4 +19,21 @@ public class Order {
     public void removeOrderItem(Product orderItem){
         orderItems.remove(orderItem);
     }
+
+    public String getID(){
+        return id;
+    }
+
+    public ArrayList<Product> getOderItems(){
+        return orderItems;
+    }
+
+    public Product getProduct(String productID){
+        for (Product product: orderItems){
+            if (product.getID().equals(productID)){
+                return product;
+            }
+        }
+        return null;
+    }
 }

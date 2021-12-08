@@ -19,4 +19,12 @@ public class Product {
         this.cost = cost;
         this.id = id;
     }
+
+    public double getCost(){
+        return cost;
+    }
+
+    public String getID(){
+        return id;
+    }
 }

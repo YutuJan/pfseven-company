@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CustomerService {
@@ -74,11 +75,67 @@ public class CustomerService {
         return false;
     }
 
-    public void payOrder(String customerID, String paymentMethod){
+    public void payOrder(String customerID, String paymentMethod) throws SQLException {
+        Customer customer = bunchOfCustomers.get(customerID);
 
+
+        addCustomerInDatabase(customer);
+        addOrderInDatabase(customer, paymentMethod);
+        bunchOfCustomers.remove(customerID);
     }
 
-    private double computeDiscount(String customerCategory, String paymentMethod, Product boughtProduct){
-        return 0;//TODO replace with the actual func
+    private void addCustomerInDatabase(Customer customer) throws SQLException {
+        int result;
+
+        result = statement.executeUpdate("insert into customers values (" +
+                "'" + customer.getID() + "', '" + customer.getName() + "', '" + customer.getCategory() + "')");
+        logger.info("Add Customers In Database command was successful with result {}.", result);
+    }
+
+    private void addOrderInDatabase(Customer customer, String paymentMethod) throws SQLException {
+        String orderID = customer.getOrder().getID();
+        String customerID = customer.getID();
+        String customerCategory = customer.getCategory();
+        ArrayList<Product> orderItems = customer.getOrder().getOderItems();
+
+        for (Product orderItem: orderItems){
+            String productID = orderItem.getID();
+            String costWithDiscount = String.valueOf(computeDiscount(customerCategory, paymentMethod, orderItem));
+
+            addOrderItemInDatabase(orderID, customerID, productID, paymentMethod, costWithDiscount);
+        }
+    }
+
+    private double computeDiscount(String customerCategory,
+                                   String paymentMethod,
+                                   Product boughtProduct){
+        double productPrice = boughtProduct.getCost();
+        double newPriceAfterDiscount = productPrice;
+
+        if (customerCategory.equals("B2B")){
+            newPriceAfterDiscount -= 0.2 * productPrice;
+        } else if (customerCategory.equals("B2G")){
+            newPriceAfterDiscount -= 0.5 * productPrice;
+        }
+        if (paymentMethod.equals("credit")){
+            newPriceAfterDiscount -= 0.15 * productPrice;
+        } else if (paymentMethod.equals("cash")){
+            newPriceAfterDiscount -= 0.1 * productPrice;
+        }
+
+        return newPriceAfterDiscount;
+    }
+
+    private void addOrderItemInDatabase(String orderID,
+                                        String customerID,
+                                        String productID,
+                                        String paymentMethod,
+                                        String costWithDiscount) throws SQLException {
+        int result;
+
+        result = statement.executeUpdate("insert into orders values (" +
+                "'" + orderID + "', '" + customerID + "', '" + productID +
+                "', '" + paymentMethod + "', '" + costWithDiscount + "')");
+        logger.info("Add Orders In Database command was successful with result {}.", result);
     }
 }

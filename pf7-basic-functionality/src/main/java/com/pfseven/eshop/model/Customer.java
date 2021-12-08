@@ -30,4 +30,12 @@ public class Customer {
     public String getID(){
         return id;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public Order getOrder(){
+        return order;
+    }
 }
