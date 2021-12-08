@@ -12,4 +12,11 @@ public class Product {
         this.cost = cost;
         id = String.valueOf(Objects.hash(this.name, this.cost));
     }
+
+    //For temporary use only
+    public Product(String id, String name, double cost){
+        this.name = name;
+        this.cost = cost;
+        this.id = id;
+    }
 }

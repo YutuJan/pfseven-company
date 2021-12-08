@@ -3,16 +3,39 @@ package com.pfseven.eshop.model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 
 public class CustomerService {
     private final Logger logger = LoggerFactory.getLogger(CustomerService.class);
     private HashMap<String, Customer> bunchOfCustomers;
     private HashMap<String, Product> bunchOfProducts;
+    private Statement statement;
 
-    public CustomerService() {
+    public CustomerService(Statement statement) throws SQLException {
+        this.statement = statement;
         bunchOfCustomers = new HashMap<String, Customer>();
-        bunchOfProducts = new HashMap<String, Product>();
+        bunchOfProducts = loadFromDatabaseAllAvailableProducts();
+    }
+
+    private HashMap<String, Product> loadFromDatabaseAllAvailableProducts() throws SQLException {
+        HashMap<String, Product> products = new HashMap<>();
+
+        ResultSet resultSet = statement.executeQuery("select *" +
+                "from products;");
+
+        while (resultSet.next()){
+            String id = resultSet.getString("product_id");
+            String name = resultSet.getString("product_name");
+            double price = Double.parseDouble(resultSet.getString("product_price"));
+
+            Product product = new Product(id, name, price);
+            products.put(id, product);
+        }
+
+        return products;
     }
 
     public void addOrderItem(String customerID, String productID){

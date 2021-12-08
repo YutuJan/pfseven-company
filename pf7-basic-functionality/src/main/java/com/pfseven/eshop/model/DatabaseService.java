@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DatabaseService {
     private final Logger logger = LoggerFactory.getLogger(DatabaseService.class);
@@ -31,10 +33,10 @@ public class DatabaseService {
         createProductsTable();
         createOrdersTable();
         addProductsInDatabase();
-        /** only for testing needed
+        //** only for testing needed
         addCustomersInDatabase();
         addOrdersInDatabase();
-         **/
+         //**/
     }
 
     private void createCustomersTable() throws SQLException {
@@ -93,7 +95,7 @@ public class DatabaseService {
         logger.info("Add Product In Database command was successful with result {}.", result);
     }
 
-    /** only for testing needed
+    //** only for testing needed
     private void addCustomersInDatabase() throws SQLException {
         addCustomerInDatabase("1", "Aram", "B2B");
         addCustomerInDatabase("2", "Kosta", "B2B");
@@ -132,22 +134,12 @@ public class DatabaseService {
                 "', '" + payment_method + "', '" + cost_with_discount + "')");
         logger.info("Add Orders In Database command was successful with result {}.", result);
     }
-     **/
+     //**/
 
     public void shutDB(){
         server.stop();
         server.shutdown();
         logger.info("Server has been shutdown");
-    }
-
-    public void executeUpdate(String update) throws SQLException {
-        int result = statement.executeUpdate(update);
-        logger.info("Updating table was successful with result {}.", result);
-    }
-
-    public ResultSet executeQuery(String query) throws SQLException {
-        ResultSet resultSet = statement.executeQuery(query);
-        return resultSet;
     }
 
     public static Statement getStatement(){
