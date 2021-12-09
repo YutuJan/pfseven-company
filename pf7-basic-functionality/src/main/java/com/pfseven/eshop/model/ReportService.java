@@ -12,9 +12,11 @@ public class ReportService {
     private final Logger logger = LoggerFactory.getLogger(ReportService.class);
     private Statement statement;
 
-    public void reportCustomersWhoPurchasedMostExpensiveProductAndHowManyTimes(
-            Statement statement) throws SQLException {
+    public ReportService(Statement statement){
         this.statement = statement;
+    }
+
+    public void reportCustomersWhoPurchasedMostExpensiveProductAndHowManyTimes() throws SQLException {
         String mostExpensiveProduct;
         ArrayList<String> customersWhoPurchasedMostExpensiveProduct;
 
@@ -80,10 +82,7 @@ public class ReportService {
         }
     }
 
-    public void reportTotalNumberAndCostOfPurchasesByCustomerCategory(
-            Statement statement, String category) throws SQLException {
-        this.statement = statement;
-
+    public void reportTotalNumberAndCostOfPurchasesByCustomerCategory(String category) throws SQLException {
         reportTotalNumberOfPurchasesByCustomerCategory(category);
         reportTotalCostOfPurchasesByCustomerCategory(category);
     }
@@ -122,8 +121,7 @@ public class ReportService {
         }
     }
 
-    public void reportTotalNumberAndCostOfPurchasesByCustomerID(Statement statement, String id) throws SQLException {
-        this.statement = statement;
+    public void reportTotalNumberAndCostOfPurchasesByCustomerID(String id) throws SQLException {
         String customerName;
 
         customerName = getCustomerNameByCustomerID(id);
@@ -181,10 +179,7 @@ public class ReportService {
         }
     }
 
-    public void reportTotalNumberAndCostOfPurchasesByPaymentMethod(Statement statement,
-                                                                   String paymentMethod) throws SQLException {
-        this.statement = statement;
-
+    public void reportTotalNumberAndCostOfPurchasesByPaymentMethod(String paymentMethod) throws SQLException {
         reportTotalNumberOfPurchasesByPaymentMethod(paymentMethod);
         reportTotalCostOfPurchasesByPaymentMethod(paymentMethod);
     }

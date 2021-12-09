@@ -13,7 +13,7 @@ public class EshopController {
     private final static Logger logger = LoggerFactory.getLogger(EshopController.class);
     protected static DatabaseService databaseService = new DatabaseService();
     protected static Statement statement = DatabaseService.getStatement();
-    protected static ReportService reportService = new ReportService();
+    protected static ReportService reportService = new ReportService(statement);
     protected static CustomerService customerService = new CustomerService(statement);
 
     enum PaymentCategories {
