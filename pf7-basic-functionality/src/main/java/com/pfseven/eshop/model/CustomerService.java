@@ -17,7 +17,7 @@ public class CustomerService {
 
     public CustomerService(Statement statement) {
         this.statement = statement;
-        bunchOfCustomers = new HashMap<String, Customer>();
+        bunchOfCustomers = new HashMap<>();
         try {
             bunchOfProducts = loadFromDatabaseAllAvailableProducts();
         } catch (SQLException e) {
@@ -62,16 +62,21 @@ public class CustomerService {
         }
     }
 
-    //TODO make sure we know what we are doing in here mate...
-    public void createNewCustomer(String name, String customerCategory){
-        if (!doesCustomerNameAlreadyExists(name)){
-            Customer newCustomer = new Customer(name, customerCategory);
+    public void createNewCustomer(String name, String customerCategory) throws SQLException {
+        if (!doesCustomerHaveAPendingOrder(name)){
+            Customer newCustomer;
+            if (isCustomerInDatabase(name)){
+                newCustomer = loadCustomerFromDatabase(name);
+            } else {
+                newCustomer = new Customer(name, customerCategory);
+            }
             String newCustomerID = newCustomer.getID();
             bunchOfCustomers.put(newCustomerID, newCustomer);
+            logger.info("New customer added to pending list: {}", newCustomer);
         }
     }
 
-    private boolean doesCustomerNameAlreadyExists(String name){
+    private boolean doesCustomerHaveAPendingOrder(String name){
         for (Customer customer: bunchOfCustomers.values()){
             if (customer.getName().equals(name)){
                 logger.info("A customer with name: {} already exists...", name);
@@ -81,9 +86,40 @@ public class CustomerService {
         return false;
     }
 
+    private boolean isCustomerInDatabase(String name) throws SQLException {
+        ResultSet resultSet;
+
+        resultSet = statement.executeQuery("select customer_name " +
+                "from customers " +
+                "where customer_name = '" + name + "'");
+
+        if (resultSet.next() == false){
+            return false;
+        }
+        return true;
+    }
+
+    private Customer loadCustomerFromDatabase(String name) throws SQLException {
+        ResultSet resultSet;
+        Customer customerFromDatabase = null;
+
+        resultSet = statement.executeQuery("select customer_name " +
+                "from customers " +
+                "where customer_name = '" + name + "'");
+
+        while (resultSet.next()) {
+            String customerID = resultSet.getString("customer_id");
+            String customerName = resultSet.getString("customer_name");
+            String customerCategory = resultSet.getString("customer_category");
+
+            customerFromDatabase = new Customer(customerID, customerName, customerCategory);
+        }
+
+        return customerFromDatabase;
+    }
+
     public void payOrder(String customerID, String paymentMethod) throws SQLException {
         Customer customer = bunchOfCustomers.get(customerID);
-
 
         addCustomerInDatabase(customer);
         addOrderInDatabase(customer, paymentMethod);
@@ -118,15 +154,21 @@ public class CustomerService {
         double productPrice = boughtProduct.getCost();
         double newPriceAfterDiscount = productPrice;
 
+        logger.info("productPrice: {}", productPrice);
+        logger.info("newPriceAfterDiscount: {}", newPriceAfterDiscount);
         if (customerCategory.equals("B2B")){
-            newPriceAfterDiscount -= 0.2 * productPrice;
+            newPriceAfterDiscount = newPriceAfterDiscount - (0.2 * productPrice);
+            logger.info("B2B newPriceAfterDiscount: {}", newPriceAfterDiscount);
         } else if (customerCategory.equals("B2G")){
-            newPriceAfterDiscount -= 0.5 * productPrice;
+            newPriceAfterDiscount = newPriceAfterDiscount - (0.5 * productPrice);
+            logger.info("B2G newPriceAfterDiscount: {}", newPriceAfterDiscount);
         }
         if (paymentMethod.equals("credit")){
-            newPriceAfterDiscount -= 0.15 * productPrice;
+            newPriceAfterDiscount = newPriceAfterDiscount - (0.15 * productPrice);
+            logger.info("credit newPriceAfterDiscount: {}", newPriceAfterDiscount);
         } else if (paymentMethod.equals("cash")){
-            newPriceAfterDiscount -= 0.1 * productPrice;
+            newPriceAfterDiscount = newPriceAfterDiscount - (0.1 * productPrice);
+            logger.info("cash newPriceAfterDiscount: {}", newPriceAfterDiscount);
         }
 
         return newPriceAfterDiscount;

@@ -27,4 +27,8 @@ public class Product {
     public String getID(){
         return id;
     }
+
+    public String toString(){
+        return "product's ID: " + id + " product's name: " + name + " product's cost: " + cost;
+    }
 }

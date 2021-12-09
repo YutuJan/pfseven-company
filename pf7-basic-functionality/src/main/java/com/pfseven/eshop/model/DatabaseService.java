@@ -18,6 +18,16 @@ public class DatabaseService {
     private Connection connection;
     private static Statement statement;
 
+
+    public DatabaseService(){
+        try {
+            launchDB();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+    }
+
     public void launchDB() throws SQLException {
         server = Server.createTcpServer("-tcpAllowOthers", "-tcpDaemon");
         server.start();
@@ -33,10 +43,10 @@ public class DatabaseService {
         createProductsTable();
         createOrdersTable();
         addProductsInDatabase();
-        //** only for testing needed
+        /** only for testing needed
         addCustomersInDatabase();
         addOrdersInDatabase();
-         //**/
+         **/
     }
 
     private void createCustomersTable() throws SQLException {
@@ -92,7 +102,10 @@ public class DatabaseService {
 
         result = statement.executeUpdate("insert into products values (" +
                 "'" + product_id + "', '" + product_name + "', '" + product_price + "')");
-        logger.info("Add Product In Database command was successful with result {}.", result);
+        logger.info("New product added to DB: {}. With result: {}",
+                "product's ID: " + product_id + " product's name: " +
+                        product_name + " product's price: " + product_price,
+                result);
     }
 
     //** only for testing needed

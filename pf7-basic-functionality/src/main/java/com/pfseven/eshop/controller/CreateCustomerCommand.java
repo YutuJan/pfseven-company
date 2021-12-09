@@ -1,5 +1,7 @@
 package com.pfseven.eshop.controller;
 
+import java.sql.SQLException;
+
 import static com.pfseven.eshop.controller.EshopController.customerService;
 
 public class CreateCustomerCommand implements Command{
@@ -9,6 +11,11 @@ public class CreateCustomerCommand implements Command{
         String name = EshopController.askAdministratorForCustomerName();
         String customerType = EshopController.askAdministratorForCustomerType();
 
-        customerService.createNewCustomer(name, customerType);
+        try {
+            customerService.createNewCustomer(name, customerType);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 }

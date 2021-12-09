@@ -24,7 +24,7 @@ public class EshopView {
 
     public static void main(String[] args) {
         try {
-            controller.enact("LaunchSystem");
+            System.out.println("asdasdasd");
             askAdministratorForAnAction();
         } catch (Exception e) {
             e.printStackTrace();
