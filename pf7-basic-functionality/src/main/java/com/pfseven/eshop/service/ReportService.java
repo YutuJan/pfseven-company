@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ReportService {
     private final Logger logger = LoggerFactory.getLogger(ReportService.class);
-    private Statement statement;
+    private final Statement statement;
 
     public ReportService(Statement statement){
         this.statement = statement;
@@ -43,7 +43,7 @@ public class ReportService {
 
     private ArrayList<String> reportCustomersWhoPurchasedMostExpensiveProduct(
             String mostExpensiveProduct) throws SQLException {
-        ArrayList<String> customersWhoPurchasedMostExpensiveProduct = new ArrayList<String>();
+        ArrayList<String> customersWhoPurchasedMostExpensiveProduct = new ArrayList<>();
 
         ResultSet resultSet = statement.executeQuery("select distinct customer_name " +
                 "from orders " +

@@ -8,15 +8,14 @@ import java.util.Objects;
 @Getter
 @ToString
 public class Customer {
-    private String id;
-    private String name;
-    private String category;
-    private Order order;
+    private final String id;
+    private final String name;
+    private final String category;
+    private final Order order = new Order();
 
     public Customer(String name, String category){
         this.name = name;
         this.category = category;
-        this.order = new Order();
         this.id = String.valueOf(Objects.hash(this.name));
     }
 
@@ -27,10 +26,4 @@ public class Customer {
     public void removeOrderItem(Product orderItem){
         order.removeOrderItem(orderItem);
     }
-
-    /**
-    public String toString(){
-        return "CUSTOMER'S ID: " + id + " CUSTOMER'S NAME: " + name + " CUSTOMER'S CATEGORY: " + category;
-    }
-     **/
 }

@@ -10,11 +10,7 @@ import java.sql.*;
 
 public class DatabaseService {
     private final Logger logger = LoggerFactory.getLogger(DatabaseService.class);
-    private final String DB_CONNECTION_URL_MEMORY_MODE = "jdbc:h2:mem:sample";
-    private final String DB_USERNAME = "sa";
-    private final String DB_PASSWORD = "";
     private Server server;
-    private Connection connection;
     private static Statement statement;
 
 
@@ -35,7 +31,10 @@ public class DatabaseService {
         Driver.load();
         logger.info("DRIVER LOADED...");
 
-        connection = DriverManager.getConnection(DB_CONNECTION_URL_MEMORY_MODE, DB_USERNAME, DB_PASSWORD);
+        String DB_CONNECTION_URL_MEMORY_MODE = "jdbc:h2:mem:sample";
+        String DB_USERNAME = "sa";
+        String DB_PASSWORD = "";
+        Connection connection = DriverManager.getConnection(DB_CONNECTION_URL_MEMORY_MODE, DB_USERNAME, DB_PASSWORD);
         statement = connection.createStatement();
 
         createCustomersTable();

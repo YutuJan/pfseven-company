@@ -13,9 +13,9 @@ import java.util.HashMap;
 
 public class CustomerService {
     private final Logger logger = LoggerFactory.getLogger(CustomerService.class);
-    private HashMap<String, Customer> bunchOfCustomers;
+    private final HashMap<String, Customer> bunchOfCustomers;
     private HashMap<String, Product> bunchOfProducts;
-    private Statement statement;
+    private final Statement statement;
 
     public CustomerService(Statement statement) {
         this.statement = statement;
@@ -95,10 +95,7 @@ public class CustomerService {
                 "from customers " +
                 "where customer_name = '" + name + "'");
 
-        if (resultSet.next() == false){
-            return false;
-        }
-        return true;
+        return resultSet.next();
     }
 
     private Customer loadCustomerFromDatabase(String name) throws SQLException {

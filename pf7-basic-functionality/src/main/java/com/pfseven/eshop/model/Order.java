@@ -6,12 +6,11 @@ import java.util.ArrayList;
 
 @Getter
 public class Order {
-    private String id;
-    private ArrayList<Product> orderItems;
+    private final String id;
+    private final ArrayList<Product> orderItems = new ArrayList<>();
 
     public Order(){
         id = String.valueOf(this.hashCode());
-        orderItems = new ArrayList<>();
     }
 
     public void addOrderItem(Product orderItem){

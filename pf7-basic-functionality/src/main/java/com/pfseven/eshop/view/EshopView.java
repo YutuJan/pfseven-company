@@ -20,7 +20,7 @@ public class EshopView {
     private static final int SHUT_SYSTEM_OPTION = 9;
 
     private static final Logger logger = LoggerFactory.getLogger(EshopView.class);
-    private static EshopController controller = new EshopController();
+    private static final EshopController controller = new EshopController();
 
     public static void main(String[] args) {
         try {

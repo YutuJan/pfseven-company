@@ -19,7 +19,7 @@ public class EshopController {
     enum PaymentCategories {
         CASH("cash"), CREDIT_CARD("credit");
 
-        String value;
+        private final String value;
 
         PaymentCategories(String value){
             this.value = value;
@@ -29,7 +29,7 @@ public class EshopController {
     enum CustomerCategories {
         INDIVIDUAL("B2C"), BUSINESS("B2B"), GOVERNMENT("B2G");
 
-        String value;
+        private final String value;
 
         CustomerCategories(String value){
             this.value = value;
@@ -52,11 +52,9 @@ public class EshopController {
     }
 
     public static String askAdministratorForPaymentMethod(){
-        String inputFromAdministrator = "";
-
         do{
             logger.info("ENTER A PAYMENT METHOD: ");
-            inputFromAdministrator =  askAdministratorForAnInput();
+            String inputFromAdministrator = askAdministratorForAnInput();
             for (PaymentCategories categories: PaymentCategories.values()) {
                 if (inputFromAdministrator.equals(categories.value)) {
                     return inputFromAdministrator;
@@ -76,11 +74,9 @@ public class EshopController {
     }
 
     public static String askAdministratorForCustomerType(){
-        String inputFromAdministrator = "";
-
         do{
             logger.info("ENTER CUSTOMER'S TYPE: ");
-            inputFromAdministrator =  askAdministratorForAnInput();
+            String inputFromAdministrator = askAdministratorForAnInput();
             for (CustomerCategories categories: CustomerCategories.values()) {
                 if (inputFromAdministrator.equals(categories.value)) {
                     return inputFromAdministrator;
