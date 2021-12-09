@@ -82,12 +82,26 @@ public class DatabaseService {
     }
 
     private void addProductsInDatabase() throws SQLException {
-        addProductInDatabase("dildo", "123");
-        addProductInDatabase("car", "10000000");
-        addProductInDatabase("earplugs", "30");
-        addProductInDatabase("lamp", "100");
-        addProductInDatabase("bulb", "1");
-        addProductInDatabase("watch", "300");
+        addProductInDatabase("Pizza Margarita", "6.70");
+        addProductInDatabase("Pizza Simple", "7.60");
+        addProductInDatabase("Pizza Family", "7.90");
+        addProductInDatabase("Pizza Gustosa", "7.70");
+        addProductInDatabase("Pizza Mexicana", "8.50");
+        addProductInDatabase("Pizza Traditional", "7.60");
+        addProductInDatabase("Pizza Classic Special", "9.30");
+        addProductInDatabase("Pizza Fan Special", "9.30");
+        addProductInDatabase("Pizza Smoked", "9.00");
+        addProductInDatabase("Pizza Turkey Fan", "8.20");
+        addProductInDatabase("Pizza of Merakli", "8.40");
+        addProductInDatabase("Pizza Deutschland", "9.30");
+        addProductInDatabase("Pizza Chicken Fan", "9.50");
+        addProductInDatabase("Pizza Tex BBQ", "9.50");
+        addProductInDatabase("Pizza 4 Cheese", "9.30");
+        addProductInDatabase("Pizza Spicy Beertuosa", "9.30");
+        addProductInDatabase("Pizza Pepperoni", "7.70");
+        addProductInDatabase("Pizza English Style", "9.30");
+        addProductInDatabase("Pizza Cycladic", "7.90");
+        addProductInDatabase("Pizza Potato Βacon", "9.30");
     }
 
     private void addProductInDatabase(String product_name,
