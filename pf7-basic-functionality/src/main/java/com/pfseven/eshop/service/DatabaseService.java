@@ -1,13 +1,12 @@
-package com.pfseven.eshop.model;
+package com.pfseven.eshop.service;
 
+import com.pfseven.eshop.model.Product;
 import org.h2.Driver;
 import org.h2.tools.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DatabaseService {
     private final Logger logger = LoggerFactory.getLogger(DatabaseService.class);

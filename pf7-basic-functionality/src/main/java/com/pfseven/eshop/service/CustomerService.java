@@ -1,5 +1,7 @@
-package com.pfseven.eshop.model;
+package com.pfseven.eshop.service;
 
+import com.pfseven.eshop.model.Customer;
+import com.pfseven.eshop.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

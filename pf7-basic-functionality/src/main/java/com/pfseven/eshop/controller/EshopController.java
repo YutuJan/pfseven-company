@@ -1,8 +1,8 @@
 package com.pfseven.eshop.controller;
 
-import com.pfseven.eshop.model.CustomerService;
-import com.pfseven.eshop.model.DatabaseService;
-import com.pfseven.eshop.model.ReportService;
+import com.pfseven.eshop.service.CustomerService;
+import com.pfseven.eshop.service.DatabaseService;
+import com.pfseven.eshop.service.ReportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

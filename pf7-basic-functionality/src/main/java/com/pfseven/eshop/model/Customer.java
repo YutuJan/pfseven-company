@@ -8,7 +8,7 @@ public class Customer {
     private String category;
     private Order order;
 
-    Customer(String name, String category){
+    public Customer(String name, String category){
         this.name = name;
         this.category = category;
         this.order = new Order();
