@@ -46,7 +46,7 @@ public class CustomerService {
 
     public void addOrderItem(String customerID, String productID){
         if (!bunchOfCustomers.containsKey(customerID)){
-            logger.info("There is no customer with ID of: {}", customerID);
+            logger.info("THERE IS NO CUSTOMER WITH ID OF: {}", customerID);
         } else{
             Product orderItem = bunchOfProducts.get(productID);
             bunchOfCustomers.get(customerID).addOrderItem(orderItem);
@@ -55,7 +55,7 @@ public class CustomerService {
 
     public void removeOrderItem(String customerID, String productID){
         if (!bunchOfCustomers.containsKey(customerID)){
-            logger.info("There is no customer with ID of: {}", customerID);
+            logger.info("THERE IS NO CUSTOMER WITH ID OF: {}", customerID);
         } else{
             Product orderItem = bunchOfProducts.get(productID);
             bunchOfCustomers.get(customerID).removeOrderItem(orderItem);
@@ -72,14 +72,14 @@ public class CustomerService {
             }
             String newCustomerID = newCustomer.getID();
             bunchOfCustomers.put(newCustomerID, newCustomer);
-            logger.info("New customer added to pending list: {}", newCustomer);
+            logger.info("NEW CUSTOMER ADDED TO PENDING LIST: {}", newCustomer);
         }
     }
 
     private boolean doesCustomerHaveAPendingOrder(String name){
         for (Customer customer: bunchOfCustomers.values()){
             if (customer.getName().equals(name)){
-                logger.info("A customer with name: {} already exists...", name);
+                logger.info("A CUSTOMER WITH NAME: {} ALREADY EXISTS...", name);
                 return true;
             }
         }
@@ -130,7 +130,7 @@ public class CustomerService {
 
         result = statement.executeUpdate("insert into customers values (" +
                 "'" + customer.getID() + "', '" + customer.getName() + "', '" + customer.getCategory() + "')");
-        logger.info("Add Customers In Database command was successful with result {}.", result);
+        logger.info("ADD CUSTOMERS IN DATABASE COMMAND WAS SUCCESSFUL WITH RESULT {}.", result);
     }
 
     private void addOrderInDatabase(Customer customer, String paymentMethod) throws SQLException {
@@ -177,6 +177,6 @@ public class CustomerService {
         result = statement.executeUpdate("insert into orders values (" +
                 "'" + orderID + "', '" + customerID + "', '" + productID +
                 "', '" + paymentMethod + "', '" + costWithDiscount + "')");
-        logger.info("Add Orders In Database command was successful with result {}.", result);
+        logger.info("ADD ORDERS IN DATABASE COMMAND WAS SUCCESSFUL WITH RESULT {}.", result);
     }
 }

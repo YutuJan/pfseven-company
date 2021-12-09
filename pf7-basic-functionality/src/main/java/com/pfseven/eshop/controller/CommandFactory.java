@@ -24,7 +24,7 @@ public class CommandFactory {
         } else if (commandType.equalsIgnoreCase("ShutSystem")){
             return new ShutSystemCommand();
         } else{
-            throw new Exception("Command type: " + "'" + commandType + "'" + " is not supported!");
+            throw new Exception("COMMAND TYPE: " + "'" + commandType + "'" + " IS NOT SUPPORTED!");
         }
     }
 }

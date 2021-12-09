@@ -40,6 +40,6 @@ public class Customer {
     }
 
     public String toString(){
-        return "customer's ID: " + id + " customer's name: " + name + " customer's category: " + category;
+        return "CUSTOMER'S ID: " + id + " CUSTOMER'S NAME: " + name + " CUSTOMER'S CATEGORY: " + category;
     }
 }

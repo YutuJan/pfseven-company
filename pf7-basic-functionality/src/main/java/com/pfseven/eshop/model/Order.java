@@ -27,15 +27,4 @@ public class Order {
     public ArrayList<Product> getOderItems(){
         return orderItems;
     }
-
-    /**
-    public Product getProduct(String productID){
-        for (Product product: orderItems){
-            if (product.getID().equals(productID)){
-                return product;
-            }
-        }
-        return null;
-    }
-     **/
 }

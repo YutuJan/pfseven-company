@@ -57,7 +57,7 @@ public class ReportService {
         }
 
         for (String customerName: customersWhoPurchasedMostExpensiveProduct){
-            logger.info("Customers who purchased most expensive product: {}", customerName);
+            logger.info("CUSTOMERS WHO PURCHASED MOST EXPENSIVE PRODUCT: {}", customerName);
         }
 
         return customersWhoPurchasedMostExpensiveProduct;
@@ -76,7 +76,7 @@ public class ReportService {
                     "" + customerName + "'");
 
             while (resultSet.next()) {
-                logger.info("Times most expensive product was purchased: {}",
+                logger.info("TIMES MOST EXPENSIVE PRODUCT WAS PURCHASED: {}",
                         resultSet.getString("count(customer_name)"));
             }
         }
@@ -100,7 +100,7 @@ public class ReportService {
             String totalNumberOfOfPurchases;
 
             totalNumberOfOfPurchases = resultSet.getString("count(customer_category)");
-            logger.info("Total number of purchases: {}", totalNumberOfOfPurchases);
+            logger.info("TOTAL NUMBER OF PURCHASES: {}", totalNumberOfOfPurchases);
         }
     }
 
@@ -117,7 +117,7 @@ public class ReportService {
             String totalCostOfPurchases;
 
             totalCostOfPurchases = resultSet.getString("sum(cost_with_discount)");
-            logger.info("Total cost of purchases: {}", totalCostOfPurchases);
+            logger.info("TOTAL COST OF PURCHASES: {}", totalCostOfPurchases);
         }
     }
 
@@ -139,7 +139,7 @@ public class ReportService {
 
         while (resultSet.next()) {
             customerName = resultSet.getString("customer_name");
-            logger.info("Customer name: {}", customerName);
+            logger.info("CUSTOMER NAME: {}", customerName);
         }
 
         return customerName;
@@ -158,7 +158,7 @@ public class ReportService {
             String totalNumberOfPurchases;
 
             totalNumberOfPurchases = resultSet.getString("count(customer_name)");
-            logger.info("Total number of purchases: {}", totalNumberOfPurchases);
+            logger.info("TOTAL NUMBER OF PURCHASES: {}", totalNumberOfPurchases);
         }
     }
 
@@ -175,7 +175,7 @@ public class ReportService {
             String totalCostOfPurchases;
 
             totalCostOfPurchases = resultSet.getString("sum(cost_with_discount)");
-            logger.info("Total cost of purchases: {}", totalCostOfPurchases);
+            logger.info("TOTAL COST OF PURCHASES: {}", totalCostOfPurchases);
         }
     }
 
@@ -197,7 +197,7 @@ public class ReportService {
             String totalNumberOfPurchases;
 
             totalNumberOfPurchases = resultSet.getString("count(payment_method)");
-            logger.info("Total number of purchases: {}", totalNumberOfPurchases);
+            logger.info("TOTAL NUMBER OF PURCHASES: {}", totalNumberOfPurchases);
         }
     }
 
@@ -214,7 +214,7 @@ public class ReportService {
             String totalCostOfPurchases;
 
             totalCostOfPurchases = resultSet.getString("sum(cost_with_discount)");
-            logger.info("Total cost of purchases: {}", totalCostOfPurchases);
+            logger.info("TOTAL COST OF PURCHASES: {}", totalCostOfPurchases);
         }
     }
 }

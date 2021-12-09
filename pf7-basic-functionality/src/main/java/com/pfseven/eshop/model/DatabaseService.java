@@ -31,10 +31,10 @@ public class DatabaseService {
     public void launchDB() throws SQLException {
         server = Server.createTcpServer("-tcpAllowOthers", "-tcpDaemon");
         server.start();
-        logger.info("Server started... " + server.getStatus());
+        logger.info("SERVER STARTED... " + server.getStatus());
 
         Driver.load();
-        logger.info("Driver loaded...");
+        logger.info("DRIVER LOADED...");
 
         connection = DriverManager.getConnection(DB_CONNECTION_URL_MEMORY_MODE, DB_USERNAME, DB_PASSWORD);
         statement = connection.createStatement();
@@ -53,7 +53,7 @@ public class DatabaseService {
                 "customer_name varchar(50) not null," +
                 "customer_category varchar not null" +
                 ");");
-        logger.info("Create Customers Table command was successful with result {}.", result);
+        logger.info("CREATE CUSTOMERS TABLE COMMAND WAS SUCCESSFUL WITH RESULT {}.", result);
     }
 
     private void createProductsTable() throws SQLException {
@@ -64,7 +64,7 @@ public class DatabaseService {
                 "product_name varchar(50) not null," +
                 "product_price double not null" +
                 ");");
-        logger.info("Create Products Table command was successful with result {}.", result);
+        logger.info("CREATE PRODUCTS TABLE COMMAND WAS SUCCESSFUL WITH RESULT {}.", result);
     }
 
     private void createOrdersTable() throws SQLException {
@@ -79,7 +79,7 @@ public class DatabaseService {
                 "foreign key (customer_id) references customers(customer_id)," +
                 "foreign key (product_id) references products(product_id)" +
                 ");");
-        logger.info("Create Orders Table command was successful with result {}.", result);
+        logger.info("CREATE ORDERS TABLE COMMAND WAS SUCCESSFUL WITH RESULT {}.", result);
     }
 
     private void addProductsInDatabase() throws SQLException {
@@ -107,7 +107,7 @@ public class DatabaseService {
     public void shutDB(){
         server.stop();
         server.shutdown();
-        logger.info("Server has been shutdown");
+        logger.info("SERVER HAS BEEN SHUTDOWN");
     }
 
     public static Statement getStatement(){

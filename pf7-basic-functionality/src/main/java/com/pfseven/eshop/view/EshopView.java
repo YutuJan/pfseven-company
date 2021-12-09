@@ -58,14 +58,14 @@ public class EshopView {
             } else if (adminOption == REMOVE_PRODUCT_TO_AN_ORDER_OPTION){
                 controller.enact("RemoveProductOrder");
             } else {
-                logger.info("This option is not available, please try again...");
+                logger.info("THIS OPTION IS NOT AVAILABLE, PLEASE TRY AGAIN...");
             }
         }
     }
 
     private static void showAdministratorPossibleActions() {
         logger.info("------------------------------------");
-        logger.info("Choose one of the following options:");
+        logger.info("CHOOSE ONE OF THE FOLLOWING OPTIONS:");
         logger.info(CREATE_CUSTOMER_OPTION + ") " + "CREATE CUSTOMER");
         logger.info(ADD_PRODUCT_TO_AN_ORDER_OPTION + ") " +
                 "ADD PRODUCT TO AN ORDER");

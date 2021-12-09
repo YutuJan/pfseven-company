@@ -42,12 +42,12 @@ public class EshopController {
     }
 
     public static String askAdministratorForCustomerID(){
-        logger.info("Enter customer id: ");
+        logger.info("ENTER CUSTOMER'S ID: ");
         return askAdministratorForAnInput();
     }
 
     public static String askAdministratorForProductID(){
-        logger.info("Enter product id: ");
+        logger.info("ENTER PRODUCT'S ID: ");
         return askAdministratorForAnInput();
     }
 
@@ -55,23 +55,23 @@ public class EshopController {
         String inputFromAdministrator = "";
 
         do{
-            logger.info("Enter payment method: ");
+            logger.info("ENTER A PAYMENT METHOD: ");
             inputFromAdministrator =  askAdministratorForAnInput();
             for (PaymentCategories categories: PaymentCategories.values()) {
                 if (inputFromAdministrator.equals(categories.value)) {
                     return inputFromAdministrator;
                 }
             }
-            logger.info("Value {} is not correct", inputFromAdministrator);
-            logger.info("Correct values are: {}",
+            logger.info("VALUE {} IS NOT CORRECT", inputFromAdministrator);
+            logger.info("CORRECT VALUES ARE: {}",
                     PaymentCategories.CASH.value + ", " +
                             PaymentCategories.CREDIT_CARD.value);
-            logger.info("Please try again!");
+            logger.info("PLEASE TRY AGAIN!");
         }while (true);
     }
 
     public static String askAdministratorForCustomerName(){
-        logger.info("Enter customer name: ");
+        logger.info("ENTER CUSTOMER'S NAME: ");
         return askAdministratorForAnInput();
     }
 
@@ -79,19 +79,19 @@ public class EshopController {
         String inputFromAdministrator = "";
 
         do{
-            logger.info("Enter customer type: ");
+            logger.info("ENTER CUSTOMER'S TYPE: ");
             inputFromAdministrator =  askAdministratorForAnInput();
             for (CustomerCategories categories: CustomerCategories.values()) {
                 if (inputFromAdministrator.equals(categories.value)) {
                     return inputFromAdministrator;
                 }
             }
-            logger.info("Value {} is not correct", inputFromAdministrator);
-            logger.info("Correct values are: {}",
+            logger.info("VALUE {} IS NOT CORRECT", inputFromAdministrator);
+            logger.info("CORRECT VALUES ARE: {}",
                     CustomerCategories.INDIVIDUAL.value + ", " +
                     CustomerCategories.BUSINESS.value + ", " +
                     CustomerCategories.GOVERNMENT.value);
-            logger.info("Please try again!");
+            logger.info("PLEASE TRY AGAIN!");
         }while (true);
     }
 
