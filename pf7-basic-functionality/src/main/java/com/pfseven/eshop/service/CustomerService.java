@@ -72,7 +72,7 @@ public class CustomerService {
             } else {
                 newCustomer = new Customer(name, customerCategory);
             }
-            String newCustomerID = newCustomer.getID();
+            String newCustomerID = newCustomer.getId();
             bunchOfCustomers.put(newCustomerID, newCustomer);
             logger.info("NEW CUSTOMER ADDED TO PENDING LIST: {}", newCustomer);
         }
@@ -131,18 +131,18 @@ public class CustomerService {
         int result;
 
         result = statement.executeUpdate("insert into customers values (" +
-                "'" + customer.getID() + "', '" + customer.getName() + "', '" + customer.getCategory() + "')");
+                "'" + customer.getId() + "', '" + customer.getName() + "', '" + customer.getCategory() + "')");
         logger.info("ADD CUSTOMERS IN DATABASE COMMAND WAS SUCCESSFUL WITH RESULT {}.", result);
     }
 
     private void addOrderInDatabase(Customer customer, String paymentMethod) throws SQLException {
-        String orderID = customer.getOrder().getID();
-        String customerID = customer.getID();
+        String orderID = customer.getOrder().getId();
+        String customerID = customer.getId();
         String customerCategory = customer.getCategory();
-        ArrayList<Product> orderItems = customer.getOrder().getOderItems();
+        ArrayList<Product> orderItems = customer.getOrder().getOrderItems();
 
         for (Product orderItem: orderItems){
-            String productID = orderItem.getID();
+            String productID = orderItem.getId();
             String costWithDiscount = String.valueOf(computeDiscount(customerCategory, paymentMethod, orderItem));
 
             addOrderItemInDatabase(orderID, customerID, productID, paymentMethod, costWithDiscount);

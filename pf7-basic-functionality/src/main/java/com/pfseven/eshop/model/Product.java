@@ -1,9 +1,13 @@
 package com.pfseven.eshop.model;
 
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.Objects;
 
+@ToString
 public class Product {
-    private String id;
+    private @Getter String id;
     private String name;
     private double cost;
 
@@ -17,11 +21,9 @@ public class Product {
         return cost;
     }
 
-    public String getID(){
-        return id;
-    }
-
+    /**
     public String toString(){
         return "PRODUCT'S ID: " + id + " PRODUCT'S NAME: " + name + " PRODUCT'S COST: " + cost;
     }
+     **/
 }

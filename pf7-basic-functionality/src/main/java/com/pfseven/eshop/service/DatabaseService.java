@@ -96,9 +96,9 @@ public class DatabaseService {
         Product newProduct = new Product(product_name, product_price);
 
         result = statement.executeUpdate("insert into products values (" +
-                "'" + newProduct.getID() + "', '" + product_name + "', '" + product_price + "')");
+                "'" + newProduct.getId() + "', '" + product_name + "', '" + product_price + "')");
         logger.info("New product added to DB: {}. With result: {}",
-                "product's ID: " + newProduct.getID() + " product's name: " +
+                "product's ID: " + newProduct.getId() + " product's name: " +
                         product_name + " product's price: " + product_price,
                 result);
     }

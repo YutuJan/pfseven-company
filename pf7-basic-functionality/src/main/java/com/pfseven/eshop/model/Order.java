@@ -1,8 +1,10 @@
 package com.pfseven.eshop.model;
 
-import java.math.BigDecimal;
+import lombok.Getter;
+
 import java.util.ArrayList;
 
+@Getter
 public class Order {
     private String id;
     private ArrayList<Product> orderItems;
@@ -18,13 +20,5 @@ public class Order {
 
     public void removeOrderItem(Product orderItem){
         orderItems.remove(orderItem);
-    }
-
-    public String getID(){
-        return id;
-    }
-
-    public ArrayList<Product> getOderItems(){
-        return orderItems;
     }
 }

@@ -1,7 +1,12 @@
 package com.pfseven.eshop.model;
 
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.Objects;
 
+@Getter
+@ToString
 public class Customer {
     private String id;
     private String name;
@@ -23,23 +28,9 @@ public class Customer {
         order.removeOrderItem(orderItem);
     }
 
-    public String getName(){
-        return name;
-    }
-
-    public String getID(){
-        return id;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public Order getOrder(){
-        return order;
-    }
-
+    /**
     public String toString(){
         return "CUSTOMER'S ID: " + id + " CUSTOMER'S NAME: " + name + " CUSTOMER'S CATEGORY: " + category;
     }
+     **/
 }
