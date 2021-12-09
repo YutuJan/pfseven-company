@@ -15,14 +15,6 @@ public class Customer {
         this.id = String.valueOf(Objects.hash(this.name));
     }
 
-    //For temporary use only
-    Customer(String id, String name, String category){
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.order = new Order();
-    }
-
     public void addOrderItem(Product orderItem){
         order.addOrderItem(orderItem);
     }

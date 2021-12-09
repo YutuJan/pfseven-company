@@ -43,10 +43,6 @@ public class DatabaseService {
         createProductsTable();
         createOrdersTable();
         addProductsInDatabase();
-        /** only for testing needed
-        addCustomersInDatabase();
-        addOrdersInDatabase();
-         **/
     }
 
     private void createCustomersTable() throws SQLException {
@@ -87,67 +83,26 @@ public class DatabaseService {
     }
 
     private void addProductsInDatabase() throws SQLException {
-        addProductInDatabase("11", "dildo", "123");
-        addProductInDatabase("12", "car", "10000000");
-        addProductInDatabase("13", "earplugs", "30");
-        addProductInDatabase("14", "lamp", "100");
-        addProductInDatabase("15", "bulb", "1");
-        addProductInDatabase("16", "watch", "300");
+        addProductInDatabase("dildo", "123");
+        addProductInDatabase("car", "10000000");
+        addProductInDatabase("earplugs", "30");
+        addProductInDatabase("lamp", "100");
+        addProductInDatabase("bulb", "1");
+        addProductInDatabase("watch", "300");
     }
 
-    private void addProductInDatabase(String product_id,
-                                      String product_name,
+    private void addProductInDatabase(String product_name,
                                       String product_price) throws SQLException {
         int result;
+        Product newProduct = new Product(product_name, product_price);
 
         result = statement.executeUpdate("insert into products values (" +
-                "'" + product_id + "', '" + product_name + "', '" + product_price + "')");
+                "'" + newProduct.getID() + "', '" + product_name + "', '" + product_price + "')");
         logger.info("New product added to DB: {}. With result: {}",
-                "product's ID: " + product_id + " product's name: " +
+                "product's ID: " + newProduct.getID() + " product's name: " +
                         product_name + " product's price: " + product_price,
                 result);
     }
-
-    //** only for testing needed
-    private void addCustomersInDatabase() throws SQLException {
-        addCustomerInDatabase("1", "Aram", "B2B");
-        addCustomerInDatabase("2", "Kosta", "B2B");
-        addCustomerInDatabase("3", "Kira","B2B");
-    }
-
-    private void addCustomerInDatabase(String customer_id,
-                                        String customer_name,
-                                        String customer_category) throws SQLException {
-        int result;
-
-        result = statement.executeUpdate("insert into customers values (" +
-                "'" + customer_id + "', '" + customer_name + "', '" + customer_category + "')");
-        logger.info("Add Customers In Database command was successful with result {}.", result);
-    }
-
-    private void addOrdersInDatabase() throws SQLException {
-        addOrderInDatabase("1", "1", "11", "cash", "12");
-        addOrderInDatabase("2", "1", "13", "credit", "20");
-        addOrderInDatabase("3", "2", "12", "cash", "50000");
-        addOrderInDatabase("4", "2", "16", "cash", "100");
-        addOrderInDatabase("5", "3", "13", "credit", "20");
-        addOrderInDatabase("6", "3", "12", "credit", "30000");
-        addOrderInDatabase("7", "3", "12", "credit", "30000");
-    }
-
-    private void addOrderInDatabase(String order_id,
-                                     String customer_id,
-                                     String product_id,
-                                     String payment_method,
-                                     String cost_with_discount) throws SQLException {
-        int result;
-
-        result = statement.executeUpdate("insert into orders values (" +
-                "'" + order_id + "', '" + customer_id + "', '" + product_id +
-                "', '" + payment_method + "', '" + cost_with_discount + "')");
-        logger.info("Add Orders In Database command was successful with result {}.", result);
-    }
-     //**/
 
     public void shutDB(){
         server.stop();

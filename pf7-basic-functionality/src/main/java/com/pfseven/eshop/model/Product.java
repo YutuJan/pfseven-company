@@ -7,17 +7,10 @@ public class Product {
     private String name;
     private double cost;
 
-    public Product(String name, double cost){
+    public Product(String name, String cost){
         this.name = name;
-        this.cost = cost;
+        this.cost = Double.parseDouble(cost);
         id = String.valueOf(Objects.hash(this.name, this.cost));
-    }
-
-    //For temporary use only
-    public Product(String id, String name, double cost){
-        this.name = name;
-        this.cost = cost;
-        this.id = id;
     }
 
     public double getCost(){

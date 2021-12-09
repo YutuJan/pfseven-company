@@ -35,9 +35,9 @@ public class CustomerService {
         while (resultSet.next()){
             String id = resultSet.getString("product_id");
             String name = resultSet.getString("product_name");
-            double price = Double.parseDouble(resultSet.getString("product_price"));
+            String price = resultSet.getString("product_price");
 
-            Product product = new Product(id, name, price);
+            Product product = new Product(name, price);
             products.put(id, product);
         }
 
@@ -108,11 +108,10 @@ public class CustomerService {
                 "where customer_name = '" + name + "'");
 
         while (resultSet.next()) {
-            String customerID = resultSet.getString("customer_id");
             String customerName = resultSet.getString("customer_name");
             String customerCategory = resultSet.getString("customer_category");
 
-            customerFromDatabase = new Customer(customerID, customerName, customerCategory);
+            customerFromDatabase = new Customer(customerName, customerCategory);
         }
 
         return customerFromDatabase;
@@ -154,21 +153,15 @@ public class CustomerService {
         double productPrice = boughtProduct.getCost();
         double newPriceAfterDiscount = productPrice;
 
-        logger.info("productPrice: {}", productPrice);
-        logger.info("newPriceAfterDiscount: {}", newPriceAfterDiscount);
         if (customerCategory.equals("B2B")){
             newPriceAfterDiscount = newPriceAfterDiscount - (0.2 * productPrice);
-            logger.info("B2B newPriceAfterDiscount: {}", newPriceAfterDiscount);
         } else if (customerCategory.equals("B2G")){
             newPriceAfterDiscount = newPriceAfterDiscount - (0.5 * productPrice);
-            logger.info("B2G newPriceAfterDiscount: {}", newPriceAfterDiscount);
         }
         if (paymentMethod.equals("credit")){
             newPriceAfterDiscount = newPriceAfterDiscount - (0.15 * productPrice);
-            logger.info("credit newPriceAfterDiscount: {}", newPriceAfterDiscount);
         } else if (paymentMethod.equals("cash")){
             newPriceAfterDiscount = newPriceAfterDiscount - (0.1 * productPrice);
-            logger.info("cash newPriceAfterDiscount: {}", newPriceAfterDiscount);
         }
 
         return newPriceAfterDiscount;

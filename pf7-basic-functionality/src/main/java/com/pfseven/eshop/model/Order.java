@@ -28,6 +28,7 @@ public class Order {
         return orderItems;
     }
 
+    /**
     public Product getProduct(String productID){
         for (Product product: orderItems){
             if (product.getID().equals(productID)){
@@ -36,4 +37,5 @@ public class Order {
         }
         return null;
     }
+     **/
 }

@@ -24,7 +24,6 @@ public class EshopView {
 
     public static void main(String[] args) {
         try {
-            System.out.println("asdasdasd");
             askAdministratorForAnAction();
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,7 +64,7 @@ public class EshopView {
     }
 
     private static void showAdministratorPossibleActions() {
-        logger.info("-----------------------");
+        logger.info("------------------------------------");
         logger.info("Choose one of the following options:");
         logger.info(CREATE_CUSTOMER_OPTION + ") " + "CREATE CUSTOMER");
         logger.info(ADD_PRODUCT_TO_AN_ORDER_OPTION + ") " +
