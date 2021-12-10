@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import static com.pfseven.eshop.controller.EshopController.customerService;
 
-public class BuyProductsCommand implements Command{
+public class BuyProductsCommand implements Command {
 
     @Override
     public void execute() {

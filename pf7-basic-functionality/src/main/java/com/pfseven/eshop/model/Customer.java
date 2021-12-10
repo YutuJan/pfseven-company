@@ -13,17 +13,17 @@ public class Customer {
     private final String category;
     private final Order order = new Order();
 
-    public Customer(String name, String category){
+    public Customer(String name, String category) {
         this.name = name;
         this.category = category;
         this.id = String.valueOf(Objects.hash(this.name));
     }
 
-    public void addOrderItem(Product orderItem){
+    public void addOrderItem(Product orderItem) {
         order.addOrderItem(orderItem);
     }
 
-    public void removeOrderItem(Product orderItem){
+    public void removeOrderItem(Product orderItem) {
         order.removeOrderItem(orderItem);
     }
 }

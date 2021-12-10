@@ -55,7 +55,7 @@ public class EshopView {
                 controller.enact("ReportTotalNumberAndCostOfPurchasesByPaymentMethod");
             } else if (adminOption == REPORT_CUSTOMERS_WHO_PURCHASED_MOST_EXPENSIVE_PRODUCT_OPTION) {
                 controller.enact("ReportCustomersWhoPurchasedMostExpensiveProduct");
-            } else if (adminOption == REMOVE_PRODUCT_TO_AN_ORDER_OPTION){
+            } else if (adminOption == REMOVE_PRODUCT_TO_AN_ORDER_OPTION) {
                 controller.enact("RemoveProductOrder");
             } else {
                 logger.info("THIS OPTION IS NOT AVAILABLE, PLEASE TRY AGAIN...");

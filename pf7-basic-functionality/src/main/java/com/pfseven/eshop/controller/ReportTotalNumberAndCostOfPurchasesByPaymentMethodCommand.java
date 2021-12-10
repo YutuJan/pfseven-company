@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import static com.pfseven.eshop.controller.EshopController.reportService;
 
-public class ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand implements Command{
+public class ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand implements Command {
 
     @Override
     public void execute() {

@@ -4,11 +4,11 @@ import java.sql.SQLException;
 
 import static com.pfseven.eshop.controller.EshopController.databaseService;
 
-public class LaunchSystemCommand implements Command{
+public class LaunchSystemCommand implements Command {
 
     @Override
     public void execute() {
-        try{
+        try {
             databaseService.launchDB();
         } catch (SQLException e) {
             e.printStackTrace();

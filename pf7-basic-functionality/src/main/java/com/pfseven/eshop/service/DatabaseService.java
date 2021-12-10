@@ -14,7 +14,7 @@ public class DatabaseService {
     private static Statement statement;
 
 
-    public DatabaseService(){
+    public DatabaseService() {
         try {
             launchDB();
         } catch (SQLException e) {
@@ -116,13 +116,13 @@ public class DatabaseService {
                 result);
     }
 
-    public void shutDB(){
+    public void shutDB() {
         server.stop();
         server.shutdown();
         logger.info("SERVER HAS BEEN SHUTDOWN");
     }
 
-    public static Statement getStatement(){
+    public static Statement getStatement() {
         return statement;
     }
 }

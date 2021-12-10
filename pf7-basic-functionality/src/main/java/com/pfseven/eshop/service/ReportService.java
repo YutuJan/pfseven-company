@@ -12,7 +12,7 @@ public class ReportService {
     private final Logger logger = LoggerFactory.getLogger(ReportService.class);
     private final Statement statement;
 
-    public ReportService(Statement statement){
+    public ReportService(Statement statement) {
         this.statement = statement;
     }
 
@@ -35,7 +35,7 @@ public class ReportService {
                 "order by product_price desc " +
                 "limit 1");
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             mostExpensiveProduct = resultSet.getString("product_name");
         }
         return mostExpensiveProduct;
@@ -56,18 +56,19 @@ public class ReportService {
             customersWhoPurchasedMostExpensiveProduct.add(customerName);
         }
 
-        for (String customerName: customersWhoPurchasedMostExpensiveProduct){
+        for (String customerName : customersWhoPurchasedMostExpensiveProduct) {
             logger.info("CUSTOMERS WHO PURCHASED MOST EXPENSIVE PRODUCT: {}", customerName);
         }
 
         return customersWhoPurchasedMostExpensiveProduct;
     }
 
-    private void reportHowManyTimesMostExpensiveProductWasPurchased(String mostExpensiveProduct,
+    private void reportHowManyTimesMostExpensiveProductWasPurchased(
+            String mostExpensiveProduct,
             ArrayList<String> customersWhoPurchasedMostExpensiveProduct) throws SQLException {
         ResultSet resultSet;
 
-        for (String customerName: customersWhoPurchasedMostExpensiveProduct){
+        for (String customerName : customersWhoPurchasedMostExpensiveProduct) {
             resultSet = statement.executeQuery("select count(customer_name) " +
                     "from orders " +
                     "inner join customers on customers.customer_id = orders.customer_id " +

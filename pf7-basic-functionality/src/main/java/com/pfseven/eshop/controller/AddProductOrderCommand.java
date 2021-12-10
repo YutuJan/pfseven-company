@@ -2,7 +2,7 @@ package com.pfseven.eshop.controller;
 
 import static com.pfseven.eshop.controller.EshopController.customerService;
 
-public class AddProductOrderCommand implements Command{
+public class AddProductOrderCommand implements Command {
 
     @Override
     public void execute() {

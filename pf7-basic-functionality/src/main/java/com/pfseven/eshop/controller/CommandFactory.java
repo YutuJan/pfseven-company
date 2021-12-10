@@ -5,7 +5,7 @@ public class CommandFactory {
         commandType = commandType.replaceAll("\\s", "");
         if (commandType.equalsIgnoreCase("AddProductOrder")) {
             return new AddProductOrderCommand();
-        } else if (commandType.equalsIgnoreCase("RemoveProductOrder")){
+        } else if (commandType.equalsIgnoreCase("RemoveProductOrder")) {
             return new RemoveProductOrderCommand();
         } else if (commandType.equalsIgnoreCase("BuyProducts")) {
             return new BuyProductsCommand();
@@ -17,13 +17,13 @@ public class CommandFactory {
             return new ReportTotalNumberAndCostOfPurchasesByCustomerCategoryCommand();
         } else if (commandType.equalsIgnoreCase("ReportTotalNumberAndCostOfPurchasesByCustomerID")) {
             return new ReportTotalNumberAndCostOfPurchasesByCustomerIDCommand();
-        } else if (commandType.equalsIgnoreCase("ReportCustomersWhoPurchasedMostExpensiveProduct")){
+        } else if (commandType.equalsIgnoreCase("ReportCustomersWhoPurchasedMostExpensiveProduct")) {
             return new ReportCustomersWhoPurchasedMostExpensiveProductCommand();
-        } else if (commandType.equalsIgnoreCase("ReportTotalNumberAndCostOfPurchasesByPaymentMethod")){
+        } else if (commandType.equalsIgnoreCase("ReportTotalNumberAndCostOfPurchasesByPaymentMethod")) {
             return new ReportTotalNumberAndCostOfPurchasesByPaymentMethodCommand();
-        } else if (commandType.equalsIgnoreCase("ShutSystem")){
+        } else if (commandType.equalsIgnoreCase("ShutSystem")) {
             return new ShutSystemCommand();
-        } else{
+        } else {
             throw new Exception("COMMAND TYPE: " + "'" + commandType + "'" + " IS NOT SUPPORTED!");
         }
     }

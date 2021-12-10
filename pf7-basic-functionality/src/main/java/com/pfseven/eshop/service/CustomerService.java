@@ -34,7 +34,7 @@ public class CustomerService {
         ResultSet resultSet = statement.executeQuery("select *" +
                 "from products;");
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             String id = resultSet.getString("product_id");
             String name = resultSet.getString("product_name");
             String price = resultSet.getString("product_price");
@@ -46,28 +46,28 @@ public class CustomerService {
         return products;
     }
 
-    public void addOrderItem(String customerID, String productID){
-        if (!bunchOfCustomers.containsKey(customerID)){
+    public void addOrderItem(String customerID, String productID) {
+        if (!bunchOfCustomers.containsKey(customerID)) {
             logger.info("THERE IS NO CUSTOMER WITH ID OF: {}", customerID);
-        } else{
+        } else {
             Product orderItem = bunchOfProducts.get(productID);
             bunchOfCustomers.get(customerID).addOrderItem(orderItem);
         }
     }
 
-    public void removeOrderItem(String customerID, String productID){
-        if (!bunchOfCustomers.containsKey(customerID)){
+    public void removeOrderItem(String customerID, String productID) {
+        if (!bunchOfCustomers.containsKey(customerID)) {
             logger.info("THERE IS NO CUSTOMER WITH ID OF: {}", customerID);
-        } else{
+        } else {
             Product orderItem = bunchOfProducts.get(productID);
             bunchOfCustomers.get(customerID).removeOrderItem(orderItem);
         }
     }
 
     public void createNewCustomer(String name, String customerCategory) throws SQLException {
-        if (!doesCustomerHaveAPendingOrder(name)){
+        if (!doesCustomerHaveAPendingOrder(name)) {
             Customer newCustomer;
-            if (isCustomerInDatabase(name)){
+            if (isCustomerInDatabase(name)) {
                 newCustomer = loadCustomerFromDatabase(name);
             } else {
                 newCustomer = new Customer(name, customerCategory);
@@ -78,9 +78,9 @@ public class CustomerService {
         }
     }
 
-    private boolean doesCustomerHaveAPendingOrder(String name){
-        for (Customer customer: bunchOfCustomers.values()){
-            if (customer.getName().equals(name)){
+    private boolean doesCustomerHaveAPendingOrder(String name) {
+        for (Customer customer : bunchOfCustomers.values()) {
+            if (customer.getName().equals(name)) {
                 logger.info("A CUSTOMER WITH NAME: {} ALREADY EXISTS...", name);
                 return true;
             }
@@ -102,7 +102,7 @@ public class CustomerService {
         ResultSet resultSet;
         Customer customerFromDatabase = null;
 
-        resultSet = statement.executeQuery("select customer_name " +
+        resultSet = statement.executeQuery("select customer_name, customer_category " +
                 "from customers " +
                 "where customer_name = '" + name + "'");
 
@@ -119,7 +119,9 @@ public class CustomerService {
     public void payOrder(String customerID, String paymentMethod) throws SQLException {
         Customer customer = bunchOfCustomers.get(customerID);
 
-        addCustomerInDatabase(customer);
+        if (!isCustomerInDatabase(customer.getName())) {
+            addCustomerInDatabase(customer);
+        }
         addOrderInDatabase(customer, paymentMethod);
         bunchOfCustomers.remove(customerID);
     }
@@ -138,7 +140,7 @@ public class CustomerService {
         String customerCategory = customer.getCategory();
         ArrayList<Product> orderItems = customer.getOrder().getOrderItems();
 
-        for (Product orderItem: orderItems){
+        for (Product orderItem : orderItems) {
             String productID = orderItem.getId();
             String costWithDiscount = String.valueOf(computeDiscount(customerCategory, paymentMethod, orderItem));
 
@@ -148,18 +150,18 @@ public class CustomerService {
 
     private double computeDiscount(String customerCategory,
                                    String paymentMethod,
-                                   Product boughtProduct){
+                                   Product boughtProduct) {
         double productPrice = boughtProduct.getCost();
         double newPriceAfterDiscount = productPrice;
 
-        if (customerCategory.equals("B2B")){
+        if (customerCategory.equals("B2B")) {
             newPriceAfterDiscount = newPriceAfterDiscount - (0.2 * productPrice);
-        } else if (customerCategory.equals("B2G")){
+        } else if (customerCategory.equals("B2G")) {
             newPriceAfterDiscount = newPriceAfterDiscount - (0.5 * productPrice);
         }
-        if (paymentMethod.equals("credit")){
+        if (paymentMethod.equals("credit")) {
             newPriceAfterDiscount = newPriceAfterDiscount - (0.15 * productPrice);
-        } else if (paymentMethod.equals("cash")){
+        } else if (paymentMethod.equals("cash")) {
             newPriceAfterDiscount = newPriceAfterDiscount - (0.1 * productPrice);
         }
 

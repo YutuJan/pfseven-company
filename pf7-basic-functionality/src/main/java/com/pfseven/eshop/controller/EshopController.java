@@ -21,7 +21,7 @@ public class EshopController {
 
         private final String value;
 
-        PaymentCategories(String value){
+        PaymentCategories(String value) {
             this.value = value;
         }
     }
@@ -31,7 +31,7 @@ public class EshopController {
 
         private final String value;
 
-        CustomerCategories(String value){
+        CustomerCategories(String value) {
             this.value = value;
         }
     }
@@ -41,21 +41,21 @@ public class EshopController {
         command.execute();
     }
 
-    public static String askAdministratorForCustomerID(){
+    public static String askAdministratorForCustomerID() {
         logger.info("ENTER CUSTOMER'S ID: ");
         return askAdministratorForAnInput();
     }
 
-    public static String askAdministratorForProductID(){
+    public static String askAdministratorForProductID() {
         logger.info("ENTER PRODUCT'S ID: ");
         return askAdministratorForAnInput();
     }
 
-    public static String askAdministratorForPaymentMethod(){
-        do{
+    public static String askAdministratorForPaymentMethod() {
+        do {
             logger.info("ENTER A PAYMENT METHOD: ");
             String inputFromAdministrator = askAdministratorForAnInput();
-            for (PaymentCategories categories: PaymentCategories.values()) {
+            for (PaymentCategories categories : PaymentCategories.values()) {
                 if (inputFromAdministrator.equals(categories.value)) {
                     return inputFromAdministrator;
                 }
@@ -65,19 +65,19 @@ public class EshopController {
                     PaymentCategories.CASH.value + ", " +
                             PaymentCategories.CREDIT_CARD.value);
             logger.info("PLEASE TRY AGAIN!");
-        }while (true);
+        } while (true);
     }
 
-    public static String askAdministratorForCustomerName(){
+    public static String askAdministratorForCustomerName() {
         logger.info("ENTER CUSTOMER'S NAME: ");
         return askAdministratorForAnInput();
     }
 
-    public static String askAdministratorForCustomerType(){
-        do{
+    public static String askAdministratorForCustomerType() {
+        do {
             logger.info("ENTER CUSTOMER'S TYPE: ");
             String inputFromAdministrator = askAdministratorForAnInput();
-            for (CustomerCategories categories: CustomerCategories.values()) {
+            for (CustomerCategories categories : CustomerCategories.values()) {
                 if (inputFromAdministrator.equals(categories.value)) {
                     return inputFromAdministrator;
                 }
@@ -85,13 +85,13 @@ public class EshopController {
             logger.info("VALUE {} IS NOT CORRECT", inputFromAdministrator);
             logger.info("CORRECT VALUES ARE: {}",
                     CustomerCategories.INDIVIDUAL.value + ", " +
-                    CustomerCategories.BUSINESS.value + ", " +
-                    CustomerCategories.GOVERNMENT.value);
+                            CustomerCategories.BUSINESS.value + ", " +
+                            CustomerCategories.GOVERNMENT.value);
             logger.info("PLEASE TRY AGAIN!");
-        }while (true);
+        } while (true);
     }
 
-    public static String askAdministratorForAnInput(){
+    public static String askAdministratorForAnInput() {
         Scanner scanner = new Scanner(System.in);
         String inputFromAdministrator;
 

@@ -7,11 +7,13 @@ import java.util.Objects;
 
 @ToString
 public class Product {
-    private final @Getter String id;
+    private final @Getter
+    String id;
     private final String name;
-    private final @Getter double cost;
+    private final @Getter
+    double cost;
 
-    public Product(String name, String cost){
+    public Product(String name, String cost) {
         this.name = name;
         this.cost = Double.parseDouble(cost);
         id = String.valueOf(Objects.hash(this.name, this.cost));
