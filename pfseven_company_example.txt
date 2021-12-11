@@ -1,0 +1,153 @@
+product's ID: -1721889666	product's name: Pizza Margarita product's 		price: 6.70. With result: 1
+product's ID: 1096695927 	product's name: Pizza Simple product's 			price: 7.60. With result: 1
+product's ID: 923880712 	product's name: Pizza Family product's 			price: 7.90. With result: 1
+product's ID: 1969691020 	product's name: Pizza Gustosa product's 		price: 7.70. With result: 1
+product's ID: 1522483343 	product's name: Pizza Mexicana product's 		price: 8.50. With result: 1
+product's ID: -48944174 	product's name: Pizza Traditional product's 	price: 7.60. With result: 1
+product's ID: -1123885327 	product's name: Pizza Classic Special product's price: 9.30. With result: 1
+product's ID: -1634928240 	product's name: Pizza Fan Special product's 	price: 9.30. With result: 1
+product's ID: 1643475380 	product's name: Pizza Smoked product's 			price: 9.00. With result: 1
+product's ID: 1303562632 	product's name: Pizza Turkey Fan product's 		price: 8.20. With result: 1
+product's ID: 1703819378 	product's name: Pizza of Merakli product's 		price: 8.40. With result: 1
+product's ID: -1992195623 	product's name: Pizza Deutschland product's 	price: 9.30. With result: 1
+product's ID: -1955726447 	product's name: Pizza Chicken Fan product's 	price: 9.50. With result: 1
+product's ID: 613876481 	product's name: Pizza Tex BBQ product's 		price: 9.50. With result: 1
+product's ID: -2068297719 	product's name: Pizza 4 Cheese product's 		price: 9.30. With result: 1
+product's ID: 1752464206 	product's name: Pizza Spicy Beertuosa product's price: 9.30. With result: 1
+product's ID: -629940590 	product's name: Pizza Pepperoni product's 		price: 7.70. With result: 1
+product's ID: -524188965 	product's name: Pizza English Style product's 	price: 9.30. With result: 1
+product's ID: -181390064 	product's name: Pizza Cycladic product's 		price: 7.90. With result: 1
+product's ID: -785379758 	product's name: Pizza Potato Βacon product's 	price: 9.30. With result: 1
+--------------------------------------------------------------------------------------------------------
+Customer(id=2049116, 		name=Aram, 		category=B2G)
+Customer(id=-1794429963, 	name=Manveer, 	category=B2B)
+Customer(id=258620327, 		name=Eudokia, 	category=B2B)
+Customer(id=-1997440466, 	name=Marios, 	category=B2C)
+Customer(id=-1907790698, 	name=Petros, 	category=B2C)
+--------------------------------------------------------------------------------------------------------
+
+ADD PRODUCT TO AN ORDER
+
+------------------------Customer(id=2049116, name=Aram, category=B2G)-----------------------------------
+ID: -48944174 		product's name: Pizza Traditional product's price: 	price: 7.60
+ID: -2068297719 	product's name: Pizza 4 Cheese product's price: 	price: 9.30
+
+------------------------Customer(id=-1794429963, name=Manveer, category=B2B)----------------------------
+ID: -524188965 		product's name: Pizza English Style product's 		price: 9.30
+ID: 1752464206 		product's name: Pizza Spicy Beertuosa product's 	price: 9.30
+
+------------------------Customer(id=258620327, name=Eudokia, category=B2B)------------------------------
+ID: -785379758 		product's name: Pizza Potato Βacon product's 		price: 9.30
+ID: -181390064 		product's name: Pizza Cycladic product's 			price: 7.90
+ID: -629940590 		product's name: Pizza Pepperoni product's 			price: 7.70
+ID: 1303562632 		product's name: Pizza Turkey Fan product's 			price: 8.20
+ID: -1955726447 	product's name: Pizza Chicken Fan product's 		price: 9.50 (will be added later)
+
+------------------------Customer(id=-1997440466, name=Marios, category=B2C)-----------------------------
+ID: -1721889666		product's name: Pizza Margarita product's 			price: 6.70
+
+------------------------Customer(id=-1907790698, name=Petros, category=B2C)-----------------------------
+ID: 1096695927 		product's name: Pizza Simple product's 				price: 7.60
+ID: 923880712 		product's name: Pizza Family product's 				price: 7.90
+--------------------------------------------------------------------------------------------------------
+
+BUY PRODUCTS
+
+------------------------Customer(id=2049116, name=Aram, category=B2G)-(credit)--------------------------
+------------------------Customer(id=-1794429963, name=Manveer, category=B2B)-(cash)---------------------
+------------------------Customer(id=258620327, name=Eudokia, category=B2B)-(credit)---------------------
+------------------------Customer(id=-1997440466, name=Marios, category=B2C)-(cash)----------------------
+------------------------Customer(id=-1907790698, name=Petros, category=B2C)-(cash)----------------------
+
+REPORT TOTAL NUMBER AND COST OF PURCHASES BY CUSTOMER ID
+
+------------------------Customer(id=2049116, name=Aram, category=B2G)-----------------------------------
+CUSTOMER NAME: Aram
+TOTAL NUMBER OF PURCHASES: 2
+TOTAL COST OF PURCHASES: 5.915000000000001
+
+																	>Explanation
+																	7.60 + 9.30 = 16.9	| (2 Pizzas)
+																	16.9 - (0.5 + 0.15) * 16.9 = 5.915
+------------------------Customer(id=-1794429963, name=Manveer, category=B2B)----------------------------
+CUSTOMER NAME: Manveer
+TOTAL NUMBER OF PURCHASES: 2
+TOTAL COST OF PURCHASES: 13.02
+
+																	>Explanation
+																	9.30 + 9.30 = 18.6 | (2 Pizzas)
+																	18.6 - (0.2 + 0.1) * 18.6 = 13.02
+------------------------Customer(id=258620327, name=Eudokia, category=B2B)------------------------------
+CUSTOMER NAME: Eudokia
+TOTAL NUMBER OF PURCHASES: 4
+TOTAL COST OF PURCHASES: 21.515
+
+														>Explanation
+														9.30 + 7.90 + 7.70 + 8.20 = 33.1 | (4 Pizzas)
+														33.1 - (0.2 + 0.15) * 33.1 = 21.515
+------------------------Customer(id=-1997440466, name=Marios, category=B2C)-----------------------------
+CUSTOMER NAME: Marios
+TOTAL NUMBER OF PURCHASES: 1
+TOTAL COST OF PURCHASES: 6.03
+
+																			>Explanation
+																			6.70	| (1 Pizza)
+																			6.70 - (0.1 * 6.70) = 6.03
+------------------------Customer(id=-1907790698, name=Petros, category=B2C)-----------------------------
+CUSTOMER NAME: Petros
+TOTAL NUMBER OF PURCHASES: 2
+TOTAL COST OF PURCHASES: 13.95
+
+																		>Explanation
+																		7.60 + 7.90 = 15.5 | (2 Pizzas)
+																		15.5 - (0.1 * 15.5) = 13.95
+--------------------------------------------------------------------------------------------------------
+
+REPORT TOTAL NUMBER AND COST OF PURCHASES BY CUSTOMER CATEGORY
+
+------------------------B2G-----------------------------------------------------------------------------
+TOTAL NUMBER OF PURCHASES: 2
+TOTAL COST OF PURCHASES: 5.915000000000001
+
+																			>Explanation
+																			Aram = 5.915	| (2 Pizzas)
+																			Sum  = 5.915	| (2 Pizzas)
+------------------------B2B-----------------------------------------------------------------------------
+TOTAL NUMBER OF PURCHASES: 6
+TOTAL COST OF PURCHASES: 34.535
+
+																		>Explanation
+																		Manveer = 13.02		| (2 Pizzas)
+																		Eudokia = 21.515	| (4 Pizzas)
+																		Sum 	= 34.535 	| (6 Pizzas)
+------------------------B2C-----------------------------------------------------------------------------
+TOTAL NUMBER OF PURCHASES: 3
+TOTAL COST OF PURCHASES: 19.98
+
+																			>Explanation
+																			Marios = 6.03	| (1 Pizzas)
+																			Petros = 13.95	| (2 Pizzas)
+																			Sum = 19.98		| (3 Pizzas)
+--------------------------------------------------------------------------------------------------------
+
+REPORT TOTAL NUMBER AND COST OF PURCHASES BY PAYMENT METHOD
+
+------------------------cash----------------------------------------------------------------------------
+TOTAL NUMBER OF PURCHASES: 5
+TOTAL COST OF PURCHASES: 33.0
+
+																			>Explanation
+																			Maveer => 13.02	|(2 Pizzas)
+																			Marios => 6.03	|(1 Pizzas)
+																			Petros => 13.95	|(2 Pizzas)
+																			Sum	   =  33	|(5 Pizzas)
+------------------------credit--------------------------------------------------------------------------
+TOTAL NUMBER OF PURCHASES: 6
+TOTAL COST OF PURCHASES: 27.43
+
+																		>Explanation
+																		Aram 	=> 5.915 	|(2 Pizzas)
+																		Eudokia => 21.515 	|(4 Pizzas)
+																		Sum 	=  27.43	|(6 Pizzas)
+--------------------------------------------------------------------------------------------------------
+
