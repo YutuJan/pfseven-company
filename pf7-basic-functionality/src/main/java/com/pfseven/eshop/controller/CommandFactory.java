@@ -11,8 +11,6 @@ public class CommandFactory {
             return new BuyProductsCommand();
         } else if (commandType.equalsIgnoreCase("CreateCustomer")) {
             return new CreateCustomerCommand();
-        } else if (commandType.equalsIgnoreCase("LaunchSystem")) {
-            return new LaunchSystemCommand();
         } else if (commandType.equalsIgnoreCase("ReportTotalNumberAndCostOfPurchasesByCustomerCategory")) {
             return new ReportTotalNumberAndCostOfPurchasesByCustomerCategoryCommand();
         } else if (commandType.equalsIgnoreCase("ReportTotalNumberAndCostOfPurchasesByCustomerID")) {
