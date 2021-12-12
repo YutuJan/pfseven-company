@@ -1,5 +1,5 @@
 # pfseven-company
-An intermedia project issued by Project Future 7 powered by ReGeneration.
+An intermediate project issued by Project Future 7 powered by ReGeneration.
 This assignment aimed to familiarize us with Java, Maven, intelliJ IDEA,
 and many other tech tools as well as to commonly known software development techniques,
 learned during the first week of training.
